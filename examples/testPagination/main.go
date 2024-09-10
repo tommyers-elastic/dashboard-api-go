@@ -6,7 +6,7 @@ import (
 	"reflect"
 	"strings"
 
-	meraki "github.com/meraki/dashboard-api-go/v3/sdk"
+	meraki "github.com/tommyers-elastic/dashboard-api-go/v3/sdk"
 )
 
 var client *meraki.Client
