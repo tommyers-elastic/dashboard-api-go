@@ -200,7 +200,7 @@ type RequestCellularGatewayUpdateNetworkCellularGatewayUplinkBandwidthLimits str
 */
 func (s *CellularGatewayService) GetDeviceCellularGatewayLan(serial string) (*ResponseCellularGatewayGetDeviceCellularGatewayLan, *resty.Response, error) {
 	path := "/api/v1/devices/{serial}/cellularGateway/lan"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{serial}", fmt.Sprintf("%v", serial), -1)
 
 	response, err := s.client.R().
@@ -233,7 +233,7 @@ func (s *CellularGatewayService) GetDeviceCellularGatewayLan(serial string) (*Re
 */
 func (s *CellularGatewayService) GetDeviceCellularGatewayPortForwardingRules(serial string) (*ResponseCellularGatewayGetDeviceCellularGatewayPortForwardingRules, *resty.Response, error) {
 	path := "/api/v1/devices/{serial}/cellularGateway/portForwardingRules"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{serial}", fmt.Sprintf("%v", serial), -1)
 
 	response, err := s.client.R().
@@ -266,7 +266,7 @@ func (s *CellularGatewayService) GetDeviceCellularGatewayPortForwardingRules(ser
 */
 func (s *CellularGatewayService) GetNetworkCellularGatewayConnectivityMonitoringDestinations(networkID string) (*ResponseCellularGatewayGetNetworkCellularGatewayConnectivityMonitoringDestinations, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/cellularGateway/connectivityMonitoringDestinations"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -299,7 +299,7 @@ func (s *CellularGatewayService) GetNetworkCellularGatewayConnectivityMonitoring
 */
 func (s *CellularGatewayService) GetNetworkCellularGatewayDhcp(networkID string) (*ResponseCellularGatewayGetNetworkCellularGatewayDhcp, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/cellularGateway/dhcp"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -332,7 +332,7 @@ func (s *CellularGatewayService) GetNetworkCellularGatewayDhcp(networkID string)
 */
 func (s *CellularGatewayService) GetNetworkCellularGatewaySubnetPool(networkID string) (*ResponseCellularGatewayGetNetworkCellularGatewaySubnetPool, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/cellularGateway/subnetPool"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -365,7 +365,7 @@ func (s *CellularGatewayService) GetNetworkCellularGatewaySubnetPool(networkID s
 */
 func (s *CellularGatewayService) GetNetworkCellularGatewayUplink(networkID string) (*ResponseCellularGatewayGetNetworkCellularGatewayUplink, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/cellularGateway/uplink"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -399,7 +399,7 @@ func (s *CellularGatewayService) GetNetworkCellularGatewayUplink(networkID strin
 */
 func (s *CellularGatewayService) GetOrganizationCellularGatewayUplinkStatuses(organizationID string, getOrganizationCellularGatewayUplinkStatusesQueryParams *GetOrganizationCellularGatewayUplinkStatusesQueryParams) (*ResponseCellularGatewayGetOrganizationCellularGatewayUplinkStatuses, *resty.Response, error) {
 	path := "/api/v1/organizations/{organizationId}/cellularGateway/uplink/statuses"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{organizationId}", fmt.Sprintf("%v", organizationID), -1)
 
 	queryString, _ := query.Values(getOrganizationCellularGatewayUplinkStatusesQueryParams)
@@ -432,7 +432,7 @@ func (s *CellularGatewayService) GetOrganizationCellularGatewayUplinkStatuses(or
 */
 func (s *CellularGatewayService) UpdateDeviceCellularGatewayLan(serial string, requestCellularGatewayUpdateDeviceCellularGatewayLan *RequestCellularGatewayUpdateDeviceCellularGatewayLan) (*ResponseCellularGatewayUpdateDeviceCellularGatewayLan, *resty.Response, error) {
 	path := "/api/v1/devices/{serial}/cellularGateway/lan"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{serial}", fmt.Sprintf("%v", serial), -1)
 
 	response, err := s.client.R().
@@ -464,7 +464,7 @@ func (s *CellularGatewayService) UpdateDeviceCellularGatewayLan(serial string, r
 */
 func (s *CellularGatewayService) UpdateDeviceCellularGatewayPortForwardingRules(serial string, requestCellularGatewayUpdateDeviceCellularGatewayPortForwardingRules *RequestCellularGatewayUpdateDeviceCellularGatewayPortForwardingRules) (*resty.Response, error) {
 	path := "/api/v1/devices/{serial}/cellularGateway/portForwardingRules"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{serial}", fmt.Sprintf("%v", serial), -1)
 
 	response, err := s.client.R().
@@ -494,7 +494,7 @@ func (s *CellularGatewayService) UpdateDeviceCellularGatewayPortForwardingRules(
 */
 func (s *CellularGatewayService) UpdateNetworkCellularGatewayConnectivityMonitoringDestinations(networkID string, requestCellularGatewayUpdateNetworkCellularGatewayConnectivityMonitoringDestinations *RequestCellularGatewayUpdateNetworkCellularGatewayConnectivityMonitoringDestinations) (*resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/cellularGateway/connectivityMonitoringDestinations"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -524,7 +524,7 @@ func (s *CellularGatewayService) UpdateNetworkCellularGatewayConnectivityMonitor
 */
 func (s *CellularGatewayService) UpdateNetworkCellularGatewayDhcp(networkID string, requestCellularGatewayUpdateNetworkCellularGatewayDhcp *RequestCellularGatewayUpdateNetworkCellularGatewayDhcp) (*ResponseCellularGatewayUpdateNetworkCellularGatewayDhcp, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/cellularGateway/dhcp"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -556,7 +556,7 @@ func (s *CellularGatewayService) UpdateNetworkCellularGatewayDhcp(networkID stri
 */
 func (s *CellularGatewayService) UpdateNetworkCellularGatewaySubnetPool(networkID string, requestCellularGatewayUpdateNetworkCellularGatewaySubnetPool *RequestCellularGatewayUpdateNetworkCellularGatewaySubnetPool) (*resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/cellularGateway/subnetPool"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -586,7 +586,7 @@ func (s *CellularGatewayService) UpdateNetworkCellularGatewaySubnetPool(networkI
 */
 func (s *CellularGatewayService) UpdateNetworkCellularGatewayUplink(networkID string, requestCellularGatewayUpdateNetworkCellularGatewayUplink *RequestCellularGatewayUpdateNetworkCellularGatewayUplink) (*ResponseCellularGatewayUpdateNetworkCellularGatewayUplink, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/cellularGateway/uplink"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().

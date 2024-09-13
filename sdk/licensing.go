@@ -286,7 +286,7 @@ type RequestLicensingMoveOrganizationLicensingCotermLicensesLicensesCounts struc
 */
 func (s *LicensingService) GetAdministeredLicensingSubscriptionEntitlements(getAdministeredLicensingSubscriptionEntitlementsQueryParams *GetAdministeredLicensingSubscriptionEntitlementsQueryParams) (*ResponseLicensingGetAdministeredLicensingSubscriptionEntitlements, *resty.Response, error) {
 	path := "/api/v1/administered/licensing/subscription/entitlements"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 
 	queryString, _ := query.Values(getAdministeredLicensingSubscriptionEntitlementsQueryParams)
 
@@ -320,7 +320,7 @@ func (s *LicensingService) GetAdministeredLicensingSubscriptionEntitlements(getA
 */
 func (s *LicensingService) GetAdministeredLicensingSubscriptionSubscriptions(getAdministeredLicensingSubscriptionSubscriptionsQueryParams *GetAdministeredLicensingSubscriptionSubscriptionsQueryParams) (*ResponseLicensingGetAdministeredLicensingSubscriptionSubscriptions, *resty.Response, error) {
 	path := "/api/v1/administered/licensing/subscription/subscriptions"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 
 	queryString, _ := query.Values(getAdministeredLicensingSubscriptionSubscriptionsQueryParams)
 
@@ -354,7 +354,7 @@ func (s *LicensingService) GetAdministeredLicensingSubscriptionSubscriptions(get
 */
 func (s *LicensingService) GetAdministeredLicensingSubscriptionSubscriptionsComplianceStatuses(getAdministeredLicensingSubscriptionSubscriptionsComplianceStatusesQueryParams *GetAdministeredLicensingSubscriptionSubscriptionsComplianceStatusesQueryParams) (*ResponseLicensingGetAdministeredLicensingSubscriptionSubscriptionsComplianceStatuses, *resty.Response, error) {
 	path := "/api/v1/administered/licensing/subscription/subscriptions/compliance/statuses"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 
 	queryString, _ := query.Values(getAdministeredLicensingSubscriptionSubscriptionsComplianceStatusesQueryParams)
 
@@ -389,7 +389,7 @@ func (s *LicensingService) GetAdministeredLicensingSubscriptionSubscriptionsComp
 */
 func (s *LicensingService) GetOrganizationLicensingCotermLicenses(organizationID string, getOrganizationLicensingCotermLicensesQueryParams *GetOrganizationLicensingCotermLicensesQueryParams) (*ResponseLicensingGetOrganizationLicensingCotermLicenses, *resty.Response, error) {
 	path := "/api/v1/organizations/{organizationId}/licensing/coterm/licenses"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{organizationId}", fmt.Sprintf("%v", organizationID), -1)
 
 	queryString, _ := query.Values(getOrganizationLicensingCotermLicensesQueryParams)
@@ -425,7 +425,7 @@ func (s *LicensingService) GetOrganizationLicensingCotermLicenses(organizationID
 
 func (s *LicensingService) ClaimAdministeredLicensingSubscriptionSubscriptions(requestLicensingClaimAdministeredLicensingSubscriptionSubscriptions *RequestLicensingClaimAdministeredLicensingSubscriptionSubscriptions, claimAdministeredLicensingSubscriptionSubscriptionsQueryParams *ClaimAdministeredLicensingSubscriptionSubscriptionsQueryParams) (*ResponseLicensingClaimAdministeredLicensingSubscriptionSubscriptions, *resty.Response, error) {
 	path := "/api/v1/administered/licensing/subscription/subscriptions/claim"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 
 	queryString, _ := query.Values(claimAdministeredLicensingSubscriptionSubscriptionsQueryParams)
 
@@ -460,7 +460,7 @@ func (s *LicensingService) ClaimAdministeredLicensingSubscriptionSubscriptions(r
 
 func (s *LicensingService) ValidateAdministeredLicensingSubscriptionSubscriptionsClaimKey(requestLicensingValidateAdministeredLicensingSubscriptionSubscriptionsClaimKey *RequestLicensingValidateAdministeredLicensingSubscriptionSubscriptionsClaimKey) (*ResponseLicensingValidateAdministeredLicensingSubscriptionSubscriptionsClaimKey, *resty.Response, error) {
 	path := "/api/v1/administered/licensing/subscription/subscriptions/claimKey/validate"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").
@@ -495,7 +495,7 @@ func (s *LicensingService) ValidateAdministeredLicensingSubscriptionSubscription
 
 func (s *LicensingService) BindAdministeredLicensingSubscriptionSubscription(subscriptionID string, requestLicensingBindAdministeredLicensingSubscriptionSubscription *RequestLicensingBindAdministeredLicensingSubscriptionSubscription, bindAdministeredLicensingSubscriptionSubscriptionQueryParams *BindAdministeredLicensingSubscriptionSubscriptionQueryParams) (*ResponseLicensingBindAdministeredLicensingSubscriptionSubscription, *resty.Response, error) {
 	path := "/api/v1/administered/licensing/subscription/subscriptions/{subscriptionId}/bind"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{subscriptionId}", fmt.Sprintf("%v", subscriptionID), -1)
 
 	queryString, _ := query.Values(bindAdministeredLicensingSubscriptionSubscriptionQueryParams)
@@ -532,7 +532,7 @@ func (s *LicensingService) BindAdministeredLicensingSubscriptionSubscription(sub
 
 func (s *LicensingService) MoveOrganizationLicensingCotermLicenses(organizationID string, requestLicensingMoveOrganizationLicensingCotermLicenses *RequestLicensingMoveOrganizationLicensingCotermLicenses) (*ResponseLicensingMoveOrganizationLicensingCotermLicenses, *resty.Response, error) {
 	path := "/api/v1/organizations/{organizationId}/licensing/coterm/licenses/move"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{organizationId}", fmt.Sprintf("%v", organizationID), -1)
 
 	response, err := s.client.R().

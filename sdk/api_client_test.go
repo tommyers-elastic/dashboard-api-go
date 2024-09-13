@@ -88,8 +88,6 @@ func TestNewClientWithOptionsAndRequests(t *testing.T) {
 	assert.Equal(t, client.common.client.HostURL, url)
 	assert.Equal(t, client.common.client.Debug, debug)
 	assert.Equal(t, client.common.client.Header.Get("Authorization"), fmt.Sprintf("Bearer %s", key))
-	assert.Equal(t, client.common.rateLimiterBucket.Capacity(), int64(requests))
-	assert.Equal(t, client.common.rateLimiterBucket.Rate(), float64(requests))
 }
 
 // TestSetAuthToken tests the Client.SetAuthToken method.
@@ -98,15 +96,6 @@ func TestSetAuthToken(t *testing.T) {
 	client := testClient(t)
 	client.SetAuthToken(newToken)
 	assert.Equal(t, client.common.client.Header.Get("Authorization"), fmt.Sprintf("Bearer %s", newToken))
-}
-
-// TestSetRequestsPerSecond tests the Client.SetRequestsPerSecond method.
-func TestSetRequestsPerSecond(t *testing.T) {
-	requestsPerSecond := 10
-	client := testClient(t)
-	client.SetRequestsPerSecond(requestsPerSecond)
-	assert.Equal(t, client.common.rateLimiterBucket.Capacity(), int64(requestsPerSecond))
-	assert.Equal(t, client.common.rateLimiterBucket.Rate(), float64(requestsPerSecond))
 }
 
 // TestRestyClient tests the Client.RestyClient method.
@@ -123,18 +112,18 @@ func TestGet(t *testing.T) {
 
 	// Success
 	gock.New(TEST_MERAKI_BASE_URL).Get("/url").Reply(200)
-	_, response, err := Get[result](client.common.client, client.common.rateLimiterBucket, "/url", &result{})
+	_, response, err := Get[result](client.common.client, client.common.ratelimiter, "/url", &result{})
 	assert.NoError(t, err)
 	assert.True(t, response.IsSuccess())
 
 	// HTTP error
 	gock.New(TEST_MERAKI_BASE_URL).Get("/url").ReplyError(errors.New("fail"))
-	_, _, err = Get[result](client.common.client, client.common.rateLimiterBucket, "/url", &result{})
+	_, _, err = Get[result](client.common.client, client.common.ratelimiter, "/url", &result{})
 	assert.Error(t, err)
 
 	// HTTP status code
 	gock.New(TEST_MERAKI_BASE_URL).Get("/url").Reply(405)
-	_, response, _ = Get[result](client.common.client, client.common.rateLimiterBucket, "/url", &result{})
+	_, response, _ = Get[result](client.common.client, client.common.ratelimiter, "/url", &result{})
 	assert.Equal(t, response.StatusCode(), 405)
 }
 
@@ -146,18 +135,18 @@ func TestPost(t *testing.T) {
 
 	// Success
 	gock.New(TEST_MERAKI_BASE_URL).Post("/url").Reply(200)
-	_, response, err := Post[body, result](client.common.client, client.common.rateLimiterBucket, "/url", &body{b: "body"}, &result{})
+	_, response, err := Post[body, result](client.common.client, client.common.ratelimiter, "/url", &body{b: "body"}, &result{})
 	assert.NoError(t, err)
 	assert.True(t, response.IsSuccess())
 
 	// HTTP error
 	gock.New(TEST_MERAKI_BASE_URL).Post("/url").ReplyError(errors.New("fail"))
-	_, _, err = Post[body, result](client.common.client, client.common.rateLimiterBucket, "/url", &body{b: "body"}, &result{})
+	_, _, err = Post[body, result](client.common.client, client.common.ratelimiter, "/url", &body{b: "body"}, &result{})
 	assert.Error(t, err)
 
 	// HTTP status code
 	gock.New(TEST_MERAKI_BASE_URL).Post("/url").Reply(405)
-	_, response, _ = Post[body, result](client.common.client, client.common.rateLimiterBucket, "/url", &body{b: "body"}, &result{})
+	_, response, _ = Post[body, result](client.common.client, client.common.ratelimiter, "/url", &body{b: "body"}, &result{})
 	assert.Equal(t, response.StatusCode(), 405)
 }
 
@@ -169,18 +158,18 @@ func TestPut(t *testing.T) {
 
 	// Success
 	gock.New(TEST_MERAKI_BASE_URL).Put("/url").Reply(200)
-	_, response, err := Put[body, result](client.common.client, client.common.rateLimiterBucket, "/url", &body{b: "body"}, &result{})
+	_, response, err := Put[body, result](client.common.client, client.common.ratelimiter, "/url", &body{b: "body"}, &result{})
 	assert.NoError(t, err)
 	assert.True(t, response.IsSuccess())
 
 	// HTTP error
 	gock.New(TEST_MERAKI_BASE_URL).Put("/url").ReplyError(errors.New("fail"))
-	_, _, err = Put[body, result](client.common.client, client.common.rateLimiterBucket, "/url", &body{b: "body"}, &result{})
+	_, _, err = Put[body, result](client.common.client, client.common.ratelimiter, "/url", &body{b: "body"}, &result{})
 	assert.Error(t, err)
 
 	// HTTP status code
 	gock.New(TEST_MERAKI_BASE_URL).Put("/url").Reply(405)
-	_, response, _ = Put[body, result](client.common.client, client.common.rateLimiterBucket, "/url", &body{b: "body"}, &result{})
+	_, response, _ = Put[body, result](client.common.client, client.common.ratelimiter, "/url", &body{b: "body"}, &result{})
 	assert.Equal(t, response.StatusCode(), 405)
 }
 
@@ -191,18 +180,18 @@ func TestDelete(t *testing.T) {
 
 	// Success
 	gock.New(TEST_MERAKI_BASE_URL).Delete("/url").Reply(200)
-	response, err := Delete(client.common.client, client.common.rateLimiterBucket, "/url")
+	response, err := Delete(client.common.client, client.common.ratelimiter, "/url")
 	assert.NoError(t, err)
 	assert.True(t, response.IsSuccess())
 
 	// HTTP error
 	gock.New(TEST_MERAKI_BASE_URL).Delete("/url").ReplyError(errors.New("fail"))
-	_, err = Delete(client.common.client, client.common.rateLimiterBucket, "/url")
+	_, err = Delete(client.common.client, client.common.ratelimiter, "/url")
 	assert.Error(t, err)
 
 	// HTTP status code
 	gock.New(TEST_MERAKI_BASE_URL).Delete("/url").Reply(405)
-	response, _ = Delete(client.common.client, client.common.rateLimiterBucket, "/url")
+	response, _ = Delete(client.common.client, client.common.ratelimiter, "/url")
 	assert.Equal(t, response.StatusCode(), 405)
 }
 
@@ -214,7 +203,7 @@ func TestRateLimit(t *testing.T) {
 	gock.New(TEST_MERAKI_BASE_URL).Get("/url").Reply(200)
 	start := time.Now()
 	for i := 0; i < 11; i++ {
-		Get[result](client.common.client, client.common.rateLimiterBucket, "/url", &result{})
+		Get[result](client.common.client, client.common.ratelimiter, "/url", &result{})
 	}
 	assert.LessOrEqual(t, time.Second, time.Since(start))
 }
@@ -229,7 +218,7 @@ func TestRetry(t *testing.T) {
 	gock.New(TEST_MERAKI_BASE_URL).Get("/url").Reply(429)
 	gock.New(TEST_MERAKI_BASE_URL).Get("/url").Reply(200)
 	start := time.Now()
-	Get[result](client.common.client, client.common.rateLimiterBucket, "/url", &result{})
+	Get[result](client.common.client, client.common.ratelimiter, "/url", &result{})
 	assert.LessOrEqual(t, 100*time.Millisecond, time.Since(start))
 }
 
@@ -242,6 +231,6 @@ func TestRetryAfter(t *testing.T) {
 	gock.New(TEST_MERAKI_BASE_URL).Get("/url").Reply(429).AddHeader("Retry-After", "1")
 	gock.New(TEST_MERAKI_BASE_URL).Get("/url").Reply(200)
 	start := time.Now()
-	Get[result](client.common.client, client.common.rateLimiterBucket, "/url", &result{})
+	Get[result](client.common.client, client.common.ratelimiter, "/url", &result{})
 	assert.LessOrEqual(t, time.Second, time.Since(start))
 }

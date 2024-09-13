@@ -665,7 +665,7 @@ type RequestSmUpdateOrganizationSmSentryPoliciesAssignmentsItemsPolicies struct 
 */
 func (s *SmService) GetNetworkSmBypassActivationLockAttempt(networkID string, attemptID string) (*ResponseSmGetNetworkSmBypassActivationLockAttempt, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/sm/bypassActivationLockAttempts/{attemptId}"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{attemptId}", fmt.Sprintf("%v", attemptID), -1)
 
@@ -700,7 +700,7 @@ func (s *SmService) GetNetworkSmBypassActivationLockAttempt(networkID string, at
 */
 func (s *SmService) GetNetworkSmDevices(networkID string, getNetworkSmDevicesQueryParams *GetNetworkSmDevicesQueryParams) (*ResponseSmGetNetworkSmDevices, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/sm/devices"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	queryString, _ := query.Values(getNetworkSmDevicesQueryParams)
@@ -736,7 +736,7 @@ func (s *SmService) GetNetworkSmDevices(networkID string, getNetworkSmDevicesQue
 */
 func (s *SmService) GetNetworkSmDeviceCellularUsageHistory(networkID string, deviceID string) (*ResponseSmGetNetworkSmDeviceCellularUsageHistory, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/sm/devices/{deviceId}/cellularUsageHistory"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{deviceId}", fmt.Sprintf("%v", deviceID), -1)
 
@@ -771,7 +771,7 @@ func (s *SmService) GetNetworkSmDeviceCellularUsageHistory(networkID string, dev
 */
 func (s *SmService) GetNetworkSmDeviceCerts(networkID string, deviceID string) (*ResponseSmGetNetworkSmDeviceCerts, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/sm/devices/{deviceId}/certs"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{deviceId}", fmt.Sprintf("%v", deviceID), -1)
 
@@ -807,7 +807,7 @@ func (s *SmService) GetNetworkSmDeviceCerts(networkID string, deviceID string) (
 */
 func (s *SmService) GetNetworkSmDeviceConnectivity(networkID string, deviceID string, getNetworkSmDeviceConnectivityQueryParams *GetNetworkSmDeviceConnectivityQueryParams) (*ResponseSmGetNetworkSmDeviceConnectivity, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/sm/devices/{deviceId}/connectivity"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{deviceId}", fmt.Sprintf("%v", deviceID), -1)
 
@@ -845,7 +845,7 @@ func (s *SmService) GetNetworkSmDeviceConnectivity(networkID string, deviceID st
 */
 func (s *SmService) GetNetworkSmDeviceDesktopLogs(networkID string, deviceID string, getNetworkSmDeviceDesktopLogsQueryParams *GetNetworkSmDeviceDesktopLogsQueryParams) (*ResponseSmGetNetworkSmDeviceDesktopLogs, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/sm/devices/{deviceId}/desktopLogs"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{deviceId}", fmt.Sprintf("%v", deviceID), -1)
 
@@ -883,7 +883,7 @@ func (s *SmService) GetNetworkSmDeviceDesktopLogs(networkID string, deviceID str
 */
 func (s *SmService) GetNetworkSmDeviceDeviceCommandLogs(networkID string, deviceID string, getNetworkSmDeviceDeviceCommandLogsQueryParams *GetNetworkSmDeviceDeviceCommandLogsQueryParams) (*ResponseSmGetNetworkSmDeviceDeviceCommandLogs, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/sm/devices/{deviceId}/deviceCommandLogs"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{deviceId}", fmt.Sprintf("%v", deviceID), -1)
 
@@ -920,7 +920,7 @@ func (s *SmService) GetNetworkSmDeviceDeviceCommandLogs(networkID string, device
 */
 func (s *SmService) GetNetworkSmDeviceDeviceProfiles(networkID string, deviceID string) (*ResponseSmGetNetworkSmDeviceDeviceProfiles, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/sm/devices/{deviceId}/deviceProfiles"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{deviceId}", fmt.Sprintf("%v", deviceID), -1)
 
@@ -955,7 +955,7 @@ func (s *SmService) GetNetworkSmDeviceDeviceProfiles(networkID string, deviceID 
 */
 func (s *SmService) GetNetworkSmDeviceNetworkAdapters(networkID string, deviceID string) (*ResponseSmGetNetworkSmDeviceNetworkAdapters, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/sm/devices/{deviceId}/networkAdapters"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{deviceId}", fmt.Sprintf("%v", deviceID), -1)
 
@@ -991,7 +991,7 @@ func (s *SmService) GetNetworkSmDeviceNetworkAdapters(networkID string, deviceID
 */
 func (s *SmService) GetNetworkSmDevicePerformanceHistory(networkID string, deviceID string, getNetworkSmDevicePerformanceHistoryQueryParams *GetNetworkSmDevicePerformanceHistoryQueryParams) (*ResponseSmGetNetworkSmDevicePerformanceHistory, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/sm/devices/{deviceId}/performanceHistory"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{deviceId}", fmt.Sprintf("%v", deviceID), -1)
 
@@ -1028,7 +1028,7 @@ func (s *SmService) GetNetworkSmDevicePerformanceHistory(networkID string, devic
 */
 func (s *SmService) GetNetworkSmDeviceRestrictions(networkID string, deviceID string) (*ResponseSmGetNetworkSmDeviceRestrictions, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/sm/devices/{deviceId}/restrictions"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{deviceId}", fmt.Sprintf("%v", deviceID), -1)
 
@@ -1063,7 +1063,7 @@ func (s *SmService) GetNetworkSmDeviceRestrictions(networkID string, deviceID st
 */
 func (s *SmService) GetNetworkSmDeviceSecurityCenters(networkID string, deviceID string) (*ResponseSmGetNetworkSmDeviceSecurityCenters, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/sm/devices/{deviceId}/securityCenters"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{deviceId}", fmt.Sprintf("%v", deviceID), -1)
 
@@ -1098,7 +1098,7 @@ func (s *SmService) GetNetworkSmDeviceSecurityCenters(networkID string, deviceID
 */
 func (s *SmService) GetNetworkSmDeviceSoftwares(networkID string, deviceID string) (*ResponseSmGetNetworkSmDeviceSoftwares, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/sm/devices/{deviceId}/softwares"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{deviceId}", fmt.Sprintf("%v", deviceID), -1)
 
@@ -1133,7 +1133,7 @@ func (s *SmService) GetNetworkSmDeviceSoftwares(networkID string, deviceID strin
 */
 func (s *SmService) GetNetworkSmDeviceWLANLists(networkID string, deviceID string) (*ResponseSmGetNetworkSmDeviceWLANLists, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/sm/devices/{deviceId}/wlanLists"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{deviceId}", fmt.Sprintf("%v", deviceID), -1)
 
@@ -1168,7 +1168,7 @@ func (s *SmService) GetNetworkSmDeviceWLANLists(networkID string, deviceID strin
 */
 func (s *SmService) GetNetworkSmProfiles(networkID string, getNetworkSmProfilesQueryParams *GetNetworkSmProfilesQueryParams) (*ResponseSmGetNetworkSmProfiles, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/sm/profiles"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	queryString, _ := query.Values(getNetworkSmProfilesQueryParams)
@@ -1204,7 +1204,7 @@ func (s *SmService) GetNetworkSmProfiles(networkID string, getNetworkSmProfilesQ
 */
 func (s *SmService) GetNetworkSmTargetGroups(networkID string, getNetworkSmTargetGroupsQueryParams *GetNetworkSmTargetGroupsQueryParams) (*ResponseSmGetNetworkSmTargetGroups, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/sm/targetGroups"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	queryString, _ := query.Values(getNetworkSmTargetGroupsQueryParams)
@@ -1241,7 +1241,7 @@ func (s *SmService) GetNetworkSmTargetGroups(networkID string, getNetworkSmTarge
 */
 func (s *SmService) GetNetworkSmTargetGroup(networkID string, targetGroupID string, getNetworkSmTargetGroupQueryParams *GetNetworkSmTargetGroupQueryParams) (*ResponseSmGetNetworkSmTargetGroup, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/sm/targetGroups/{targetGroupId}"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{targetGroupId}", fmt.Sprintf("%v", targetGroupID), -1)
 
@@ -1278,7 +1278,7 @@ func (s *SmService) GetNetworkSmTargetGroup(networkID string, targetGroupID stri
 */
 func (s *SmService) GetNetworkSmTrustedAccessConfigs(networkID string, getNetworkSmTrustedAccessConfigsQueryParams *GetNetworkSmTrustedAccessConfigsQueryParams) (*ResponseSmGetNetworkSmTrustedAccessConfigs, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/sm/trustedAccessConfigs"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	queryString, _ := query.Values(getNetworkSmTrustedAccessConfigsQueryParams)
@@ -1314,7 +1314,7 @@ func (s *SmService) GetNetworkSmTrustedAccessConfigs(networkID string, getNetwor
 */
 func (s *SmService) GetNetworkSmUserAccessDevices(networkID string, getNetworkSmUserAccessDevicesQueryParams *GetNetworkSmUserAccessDevicesQueryParams) (*ResponseSmGetNetworkSmUserAccessDevices, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/sm/userAccessDevices"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	queryString, _ := query.Values(getNetworkSmUserAccessDevicesQueryParams)
@@ -1350,7 +1350,7 @@ func (s *SmService) GetNetworkSmUserAccessDevices(networkID string, getNetworkSm
 */
 func (s *SmService) GetNetworkSmUsers(networkID string, getNetworkSmUsersQueryParams *GetNetworkSmUsersQueryParams) (*ResponseSmGetNetworkSmUsers, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/sm/users"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	queryString, _ := query.Values(getNetworkSmUsersQueryParams)
@@ -1386,7 +1386,7 @@ func (s *SmService) GetNetworkSmUsers(networkID string, getNetworkSmUsersQueryPa
 */
 func (s *SmService) GetNetworkSmUserDeviceProfiles(networkID string, userID string) (*ResponseSmGetNetworkSmUserDeviceProfiles, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/sm/users/{userId}/deviceProfiles"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userID), -1)
 
@@ -1421,7 +1421,7 @@ func (s *SmService) GetNetworkSmUserDeviceProfiles(networkID string, userID stri
 */
 func (s *SmService) GetNetworkSmUserSoftwares(networkID string, userID string) (*ResponseSmGetNetworkSmUserSoftwares, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/sm/users/{userId}/softwares"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userID), -1)
 
@@ -1456,7 +1456,7 @@ func (s *SmService) GetNetworkSmUserSoftwares(networkID string, userID string) (
 */
 func (s *SmService) GetOrganizationSmAdminsRoles(organizationID string, getOrganizationSmAdminsRolesQueryParams *GetOrganizationSmAdminsRolesQueryParams) (*ResponseSmGetOrganizationSmAdminsRoles, *resty.Response, error) {
 	path := "/api/v1/organizations/{organizationId}/sm/admins/roles"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{organizationId}", fmt.Sprintf("%v", organizationID), -1)
 
 	queryString, _ := query.Values(getOrganizationSmAdminsRolesQueryParams)
@@ -1492,7 +1492,7 @@ func (s *SmService) GetOrganizationSmAdminsRoles(organizationID string, getOrgan
 */
 func (s *SmService) GetOrganizationSmAdminsRole(organizationID string, roleID string) (*ResponseSmGetOrganizationSmAdminsRole, *resty.Response, error) {
 	path := "/api/v1/organizations/{organizationId}/sm/admins/roles/{roleId}"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{organizationId}", fmt.Sprintf("%v", organizationID), -1)
 	path = strings.Replace(path, "{roleId}", fmt.Sprintf("%v", roleID), -1)
 
@@ -1526,7 +1526,7 @@ func (s *SmService) GetOrganizationSmAdminsRole(organizationID string, roleID st
 */
 func (s *SmService) GetOrganizationSmApnsCert(organizationID string) (*ResponseSmGetOrganizationSmApnsCert, *resty.Response, error) {
 	path := "/api/v1/organizations/{organizationId}/sm/apnsCert"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{organizationId}", fmt.Sprintf("%v", organizationID), -1)
 
 	response, err := s.client.R().
@@ -1560,7 +1560,7 @@ func (s *SmService) GetOrganizationSmApnsCert(organizationID string) (*ResponseS
 */
 func (s *SmService) GetOrganizationSmSentryPoliciesAssignmentsByNetwork(organizationID string, getOrganizationSmSentryPoliciesAssignmentsByNetworkQueryParams *GetOrganizationSmSentryPoliciesAssignmentsByNetworkQueryParams) (*ResponseSmGetOrganizationSmSentryPoliciesAssignmentsByNetwork, *resty.Response, error) {
 	path := "/api/v1/organizations/{organizationId}/sm/sentry/policies/assignments/byNetwork"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{organizationId}", fmt.Sprintf("%v", organizationID), -1)
 
 	queryString, _ := query.Values(getOrganizationSmSentryPoliciesAssignmentsByNetworkQueryParams)
@@ -1595,7 +1595,7 @@ func (s *SmService) GetOrganizationSmSentryPoliciesAssignmentsByNetwork(organiza
 */
 func (s *SmService) GetOrganizationSmVppAccounts(organizationID string) (*ResponseSmGetOrganizationSmVppAccounts, *resty.Response, error) {
 	path := "/api/v1/organizations/{organizationId}/sm/vppAccounts"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{organizationId}", fmt.Sprintf("%v", organizationID), -1)
 
 	response, err := s.client.R().
@@ -1629,7 +1629,7 @@ func (s *SmService) GetOrganizationSmVppAccounts(organizationID string) (*Respon
 */
 func (s *SmService) GetOrganizationSmVppAccount(organizationID string, vppAccountID string) (*ResponseSmGetOrganizationSmVppAccount, *resty.Response, error) {
 	path := "/api/v1/organizations/{organizationId}/sm/vppAccounts/{vppAccountId}"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{organizationId}", fmt.Sprintf("%v", organizationID), -1)
 	path = strings.Replace(path, "{vppAccountId}", fmt.Sprintf("%v", vppAccountID), -1)
 
@@ -1664,7 +1664,7 @@ func (s *SmService) GetOrganizationSmVppAccount(organizationID string, vppAccoun
 
 func (s *SmService) CreateNetworkSmBypassActivationLockAttempt(networkID string, requestSmCreateNetworkSmBypassActivationLockAttempt *RequestSmCreateNetworkSmBypassActivationLockAttempt) (*resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/sm/bypassActivationLockAttempts"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -1698,7 +1698,7 @@ func (s *SmService) CreateNetworkSmBypassActivationLockAttempt(networkID string,
 
 func (s *SmService) CheckinNetworkSmDevices(networkID string, requestSmCheckinNetworkSmDevices *RequestSmCheckinNetworkSmDevices) (*ResponseSmCheckinNetworkSmDevices, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/sm/devices/checkin"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -1733,7 +1733,7 @@ func (s *SmService) CheckinNetworkSmDevices(networkID string, requestSmCheckinNe
 
 func (s *SmService) LockNetworkSmDevices(networkID string, requestSmLockNetworkSmDevices *RequestSmLockNetworkSmDevices) (*ResponseSmLockNetworkSmDevices, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/sm/devices/lock"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -1768,7 +1768,7 @@ func (s *SmService) LockNetworkSmDevices(networkID string, requestSmLockNetworkS
 
 func (s *SmService) ModifyNetworkSmDevicesTags(networkID string, requestSmModifyNetworkSmDevicesTags *RequestSmModifyNetworkSmDevicesTags) (*ResponseSmModifyNetworkSmDevicesTags, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/sm/devices/modifyTags"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -1803,7 +1803,7 @@ func (s *SmService) ModifyNetworkSmDevicesTags(networkID string, requestSmModify
 
 func (s *SmService) MoveNetworkSmDevices(networkID string, requestSmMoveNetworkSmDevices *RequestSmMoveNetworkSmDevices) (*ResponseSmMoveNetworkSmDevices, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/sm/devices/move"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -1838,7 +1838,7 @@ func (s *SmService) MoveNetworkSmDevices(networkID string, requestSmMoveNetworkS
 
 func (s *SmService) RebootNetworkSmDevices(networkID string, requestSmRebootNetworkSmDevices *RequestSmRebootNetworkSmDevices) (*ResponseSmRebootNetworkSmDevices, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/sm/devices/reboot"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -1873,7 +1873,7 @@ func (s *SmService) RebootNetworkSmDevices(networkID string, requestSmRebootNetw
 
 func (s *SmService) ShutdownNetworkSmDevices(networkID string, requestSmShutdownNetworkSmDevices *RequestSmShutdownNetworkSmDevices) (*ResponseSmShutdownNetworkSmDevices, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/sm/devices/shutdown"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -1908,7 +1908,7 @@ func (s *SmService) ShutdownNetworkSmDevices(networkID string, requestSmShutdown
 
 func (s *SmService) WipeNetworkSmDevices(networkID string, requestSmWipeNetworkSmDevices *RequestSmWipeNetworkSmDevices) (*ResponseSmWipeNetworkSmDevices, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/sm/devices/wipe"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -1944,7 +1944,7 @@ func (s *SmService) WipeNetworkSmDevices(networkID string, requestSmWipeNetworkS
 
 func (s *SmService) InstallNetworkSmDeviceApps(networkID string, deviceID string, requestSmInstallNetworkSmDeviceApps *RequestSmInstallNetworkSmDeviceApps) (*resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/sm/devices/{deviceId}/installApps"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{deviceId}", fmt.Sprintf("%v", deviceID), -1)
 
@@ -1979,7 +1979,7 @@ func (s *SmService) InstallNetworkSmDeviceApps(networkID string, deviceID string
 
 func (s *SmService) RefreshNetworkSmDeviceDetails(networkID string, deviceID string) (*resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/sm/devices/{deviceId}/refreshDetails"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{deviceId}", fmt.Sprintf("%v", deviceID), -1)
 
@@ -2013,7 +2013,7 @@ func (s *SmService) RefreshNetworkSmDeviceDetails(networkID string, deviceID str
 
 func (s *SmService) UnenrollNetworkSmDevice(networkID string, deviceID string) (*ResponseSmUnenrollNetworkSmDevice, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/sm/devices/{deviceId}/unenroll"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{deviceId}", fmt.Sprintf("%v", deviceID), -1)
 
@@ -2049,7 +2049,7 @@ func (s *SmService) UnenrollNetworkSmDevice(networkID string, deviceID string) (
 
 func (s *SmService) UninstallNetworkSmDeviceApps(networkID string, deviceID string, requestSmUninstallNetworkSmDeviceApps *RequestSmUninstallNetworkSmDeviceApps) (*resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/sm/devices/{deviceId}/uninstallApps"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{deviceId}", fmt.Sprintf("%v", deviceID), -1)
 
@@ -2083,7 +2083,7 @@ func (s *SmService) UninstallNetworkSmDeviceApps(networkID string, deviceID stri
 
 func (s *SmService) CreateNetworkSmTargetGroup(networkID string, requestSmCreateNetworkSmTargetGroup *RequestSmCreateNetworkSmTargetGroup) (*ResponseSmCreateNetworkSmTargetGroup, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/sm/targetGroups"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -2118,7 +2118,7 @@ func (s *SmService) CreateNetworkSmTargetGroup(networkID string, requestSmCreate
 
 func (s *SmService) CreateOrganizationSmAdminsRole(organizationID string, requestSmCreateOrganizationSmAdminsRole *RequestSmCreateOrganizationSmAdminsRole) (*ResponseSmCreateOrganizationSmAdminsRole, *resty.Response, error) {
 	path := "/api/v1/organizations/{organizationId}/sm/admins/roles"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{organizationId}", fmt.Sprintf("%v", organizationID), -1)
 
 	response, err := s.client.R().
@@ -2150,7 +2150,7 @@ func (s *SmService) CreateOrganizationSmAdminsRole(organizationID string, reques
 */
 func (s *SmService) UpdateNetworkSmDevicesFields(networkID string, requestSmUpdateNetworkSmDevicesFields *RequestSmUpdateNetworkSmDevicesFields) (*ResponseSmUpdateNetworkSmDevicesFields, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/sm/devices/fields"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -2183,7 +2183,7 @@ func (s *SmService) UpdateNetworkSmDevicesFields(networkID string, requestSmUpda
 */
 func (s *SmService) UpdateNetworkSmTargetGroup(networkID string, targetGroupID string, requestSmUpdateNetworkSmTargetGroup *RequestSmUpdateNetworkSmTargetGroup) (*ResponseSmUpdateNetworkSmTargetGroup, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/sm/targetGroups/{targetGroupId}"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{targetGroupId}", fmt.Sprintf("%v", targetGroupID), -1)
 
@@ -2217,7 +2217,7 @@ func (s *SmService) UpdateNetworkSmTargetGroup(networkID string, targetGroupID s
 */
 func (s *SmService) UpdateOrganizationSmAdminsRole(organizationID string, roleID string, requestSmUpdateOrganizationSmAdminsRole *RequestSmUpdateOrganizationSmAdminsRole) (*ResponseSmUpdateOrganizationSmAdminsRole, *resty.Response, error) {
 	path := "/api/v1/organizations/{organizationId}/sm/admins/roles/{roleId}"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{organizationId}", fmt.Sprintf("%v", organizationID), -1)
 	path = strings.Replace(path, "{roleId}", fmt.Sprintf("%v", roleID), -1)
 
@@ -2250,7 +2250,7 @@ func (s *SmService) UpdateOrganizationSmAdminsRole(organizationID string, roleID
 */
 func (s *SmService) UpdateOrganizationSmSentryPoliciesAssignments(organizationID string, requestSmUpdateOrganizationSmSentryPoliciesAssignments *RequestSmUpdateOrganizationSmSentryPoliciesAssignments) (*ResponseSmUpdateOrganizationSmSentryPoliciesAssignments, *resty.Response, error) {
 	path := "/api/v1/organizations/{organizationId}/sm/sentry/policies/assignments"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{organizationId}", fmt.Sprintf("%v", organizationID), -1)
 
 	response, err := s.client.R().
@@ -2286,7 +2286,7 @@ func (s *SmService) UpdateOrganizationSmSentryPoliciesAssignments(organizationID
 func (s *SmService) DeleteNetworkSmTargetGroup(networkID string, targetGroupID string) (*resty.Response, error) {
 	//networkID string,targetGroupID string
 	path := "/api/v1/networks/{networkId}/sm/targetGroups/{targetGroupId}"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{targetGroupId}", fmt.Sprintf("%v", targetGroupID), -1)
 
@@ -2320,7 +2320,7 @@ func (s *SmService) DeleteNetworkSmTargetGroup(networkID string, targetGroupID s
 func (s *SmService) DeleteNetworkSmUserAccessDevice(networkID string, userAccessDeviceID string) (*resty.Response, error) {
 	//networkID string,userAccessDeviceID string
 	path := "/api/v1/networks/{networkId}/sm/userAccessDevices/{userAccessDeviceId}"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{userAccessDeviceId}", fmt.Sprintf("%v", userAccessDeviceID), -1)
 
@@ -2354,7 +2354,7 @@ func (s *SmService) DeleteNetworkSmUserAccessDevice(networkID string, userAccess
 func (s *SmService) DeleteOrganizationSmAdminsRole(organizationID string, roleID string) (*resty.Response, error) {
 	//organizationID string,roleID string
 	path := "/api/v1/organizations/{organizationId}/sm/admins/roles/{roleId}"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{organizationId}", fmt.Sprintf("%v", organizationID), -1)
 	path = strings.Replace(path, "{roleId}", fmt.Sprintf("%v", roleID), -1)
 

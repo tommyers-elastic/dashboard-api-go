@@ -42,7 +42,7 @@ type ResponseAdministeredGetAdministeredIDentitiesMeAuthenticationTwoFactor stru
  */
 func (s *AdministeredService) GetAdministeredIDentitiesMe() (*ResponseAdministeredGetAdministeredIDentitiesMe, *resty.Response, error) {
 	path := "/api/v1/administered/identities/me"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 
 	response, err := s.client.R().
 		SetHeader("Content-Type", "application/json").

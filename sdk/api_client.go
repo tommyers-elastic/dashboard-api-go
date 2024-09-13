@@ -10,7 +10,7 @@ import (
 	"time"
 
 	"github.com/go-resty/resty/v2"
-	"github.com/juju/ratelimit"
+	"go.uber.org/ratelimit"
 )
 
 const (
@@ -45,8 +45,8 @@ type Client struct {
 }
 
 type service struct {
-	client            *resty.Client
-	rateLimiterBucket *ratelimit.Bucket
+	client      *resty.Client
+	ratelimiter ratelimit.Limiter
 }
 
 // SetAuthToken sets the Authorization bearer token sent in the request
@@ -63,7 +63,7 @@ func (c *Client) SetUserAgent() {
 
 // SetRequestsPerSecond sets the maximum number of requests per second
 func (c *Client) SetRequestsPerSecond(requestsPerSecond int) {
-	c.common.rateLimiterBucket = ratelimit.NewBucketWithQuantum(time.Second, int64(requestsPerSecond), int64(requestsPerSecond))
+	c.common.ratelimiter = ratelimit.New(requestsPerSecond)
 }
 
 // Error indicates an error from the invocation of a Cisco Meraki API.
@@ -207,8 +207,8 @@ func (c *Client) RestyClient() *resty.Client {
 }
 
 // Get performs a GET request
-func Get[R any](client *resty.Client, rateLimiterBucket *ratelimit.Bucket, path string, result *R) (*R, *resty.Response, error) {
-	rateLimiterBucket.Wait(1)
+func Get[R any](client *resty.Client, rateLimiter ratelimit.Limiter, path string, result *R) (*R, *resty.Response, error) {
+	rateLimiter.Take()
 	response, err := client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
@@ -228,8 +228,8 @@ func Get[R any](client *resty.Client, rateLimiterBucket *ratelimit.Bucket, path 
 }
 
 // Post performs a POST request
-func Post[B, R any](client *resty.Client, rateLimiterBucket *ratelimit.Bucket, path string, body *B, result *R) (*R, *resty.Response, error) {
-	rateLimiterBucket.Wait(1)
+func Post[B, R any](client *resty.Client, rateLimiter ratelimit.Limiter, path string, body *B, result *R) (*R, *resty.Response, error) {
+	rateLimiter.Take()
 	response, err := client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
@@ -250,8 +250,8 @@ func Post[B, R any](client *resty.Client, rateLimiterBucket *ratelimit.Bucket, p
 }
 
 // Put performs a PUT request
-func Put[B, R any](client *resty.Client, rateLimiterBucket *ratelimit.Bucket, path string, body *B, result *R) (*R, *resty.Response, error) {
-	rateLimiterBucket.Wait(1)
+func Put[B, R any](client *resty.Client, rateLimiter ratelimit.Limiter, path string, body *B, result *R) (*R, *resty.Response, error) {
+	rateLimiter.Take()
 	response, err := client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").
@@ -272,8 +272,8 @@ func Put[B, R any](client *resty.Client, rateLimiterBucket *ratelimit.Bucket, pa
 }
 
 // Delete performs a DELETE request
-func Delete(client *resty.Client, rateLimiterBucket *ratelimit.Bucket, path string) (*resty.Response, error) {
-	rateLimiterBucket.Wait(1)
+func Delete(client *resty.Client, rateLimiter ratelimit.Limiter, path string) (*resty.Response, error) {
+	rateLimiter.Take()
 	response, err := client.R().
 		SetHeader("Content-Type", "application/json").
 		SetHeader("Accept", "application/json").

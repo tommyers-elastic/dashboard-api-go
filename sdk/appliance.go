@@ -2582,7 +2582,7 @@ type RequestApplianceUpdateOrganizationApplianceVpnVpnFirewallRulesRules struct 
 */
 func (s *ApplianceService) GetDeviceApplianceDhcpSubnets(serial string) (*ResponseApplianceGetDeviceApplianceDhcpSubnets, *resty.Response, error) {
 	path := "/api/v1/devices/{serial}/appliance/dhcp/subnets"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{serial}", fmt.Sprintf("%v", serial), -1)
 
 	response, err := s.client.R().
@@ -2615,7 +2615,7 @@ func (s *ApplianceService) GetDeviceApplianceDhcpSubnets(serial string) (*Respon
 */
 func (s *ApplianceService) GetDeviceAppliancePerformance(serial string) (*ResponseApplianceGetDeviceAppliancePerformance, *resty.Response, error) {
 	path := "/api/v1/devices/{serial}/appliance/performance"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{serial}", fmt.Sprintf("%v", serial), -1)
 
 	response, err := s.client.R().
@@ -2648,7 +2648,7 @@ func (s *ApplianceService) GetDeviceAppliancePerformance(serial string) (*Respon
 */
 func (s *ApplianceService) GetDeviceAppliancePrefixesDelegated(serial string) (*ResponseApplianceGetDeviceAppliancePrefixesDelegated, *resty.Response, error) {
 	path := "/api/v1/devices/{serial}/appliance/prefixes/delegated"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{serial}", fmt.Sprintf("%v", serial), -1)
 
 	response, err := s.client.R().
@@ -2681,7 +2681,7 @@ func (s *ApplianceService) GetDeviceAppliancePrefixesDelegated(serial string) (*
 */
 func (s *ApplianceService) GetDeviceAppliancePrefixesDelegatedVLANAssignments(serial string) (*ResponseApplianceGetDeviceAppliancePrefixesDelegatedVLANAssignments, *resty.Response, error) {
 	path := "/api/v1/devices/{serial}/appliance/prefixes/delegated/vlanAssignments"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{serial}", fmt.Sprintf("%v", serial), -1)
 
 	response, err := s.client.R().
@@ -2714,7 +2714,7 @@ func (s *ApplianceService) GetDeviceAppliancePrefixesDelegatedVLANAssignments(se
 */
 func (s *ApplianceService) GetDeviceApplianceRadioSettings(serial string) (*ResponseApplianceGetDeviceApplianceRadioSettings, *resty.Response, error) {
 	path := "/api/v1/devices/{serial}/appliance/radio/settings"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{serial}", fmt.Sprintf("%v", serial), -1)
 
 	response, err := s.client.R().
@@ -2747,7 +2747,7 @@ func (s *ApplianceService) GetDeviceApplianceRadioSettings(serial string) (*Resp
 */
 func (s *ApplianceService) GetDeviceApplianceUplinksSettings(serial string) (*ResponseApplianceGetDeviceApplianceUplinksSettings, *resty.Response, error) {
 	path := "/api/v1/devices/{serial}/appliance/uplinks/settings"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{serial}", fmt.Sprintf("%v", serial), -1)
 
 	response, err := s.client.R().
@@ -2782,7 +2782,7 @@ func (s *ApplianceService) GetDeviceApplianceUplinksSettings(serial string) (*Re
 */
 func (s *ApplianceService) GetNetworkApplianceClientSecurityEvents(networkID string, clientID string, getNetworkApplianceClientSecurityEventsQueryParams *GetNetworkApplianceClientSecurityEventsQueryParams) (*ResponseApplianceGetNetworkApplianceClientSecurityEvents, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/clients/{clientId}/security/events"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{clientId}", fmt.Sprintf("%v", clientID), -1)
 
@@ -2818,7 +2818,7 @@ func (s *ApplianceService) GetNetworkApplianceClientSecurityEvents(networkID str
 */
 func (s *ApplianceService) GetNetworkApplianceConnectivityMonitoringDestinations(networkID string) (*ResponseApplianceGetNetworkApplianceConnectivityMonitoringDestinations, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/connectivityMonitoringDestinations"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -2851,7 +2851,7 @@ func (s *ApplianceService) GetNetworkApplianceConnectivityMonitoringDestinations
 */
 func (s *ApplianceService) GetNetworkApplianceContentFiltering(networkID string) (*ResponseApplianceGetNetworkApplianceContentFiltering, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/contentFiltering"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -2884,7 +2884,7 @@ func (s *ApplianceService) GetNetworkApplianceContentFiltering(networkID string)
 */
 func (s *ApplianceService) GetNetworkApplianceContentFilteringCategories(networkID string) (*ResponseApplianceGetNetworkApplianceContentFilteringCategories, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/contentFiltering/categories"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -2917,7 +2917,7 @@ func (s *ApplianceService) GetNetworkApplianceContentFilteringCategories(network
 */
 func (s *ApplianceService) GetNetworkApplianceFirewallCellularFirewallRules(networkID string) (*ResponseApplianceGetNetworkApplianceFirewallCellularFirewallRules, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/firewall/cellularFirewallRules"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -2950,7 +2950,7 @@ func (s *ApplianceService) GetNetworkApplianceFirewallCellularFirewallRules(netw
 */
 func (s *ApplianceService) GetNetworkApplianceFirewallFirewalledServices(networkID string) (*ResponseApplianceGetNetworkApplianceFirewallFirewalledServices, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/firewall/firewalledServices"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -2984,7 +2984,7 @@ func (s *ApplianceService) GetNetworkApplianceFirewallFirewalledServices(network
 */
 func (s *ApplianceService) GetNetworkApplianceFirewallFirewalledService(networkID string, service string) (*ResponseApplianceGetNetworkApplianceFirewallFirewalledService, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/firewall/firewalledServices/{service}"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{service}", fmt.Sprintf("%v", service), -1)
 
@@ -3018,7 +3018,7 @@ func (s *ApplianceService) GetNetworkApplianceFirewallFirewalledService(networkI
 */
 func (s *ApplianceService) GetNetworkApplianceFirewallInboundCellularFirewallRules(networkID string) (*ResponseApplianceGetNetworkApplianceFirewallInboundCellularFirewallRules, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/firewall/inboundCellularFirewallRules"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -3051,7 +3051,7 @@ func (s *ApplianceService) GetNetworkApplianceFirewallInboundCellularFirewallRul
 */
 func (s *ApplianceService) GetNetworkApplianceFirewallInboundFirewallRules(networkID string) (*ResponseApplianceGetNetworkApplianceFirewallInboundFirewallRules, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/firewall/inboundFirewallRules"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -3084,7 +3084,7 @@ func (s *ApplianceService) GetNetworkApplianceFirewallInboundFirewallRules(netwo
 */
 func (s *ApplianceService) GetNetworkApplianceFirewallL3FirewallRules(networkID string) (*ResponseApplianceGetNetworkApplianceFirewallL3FirewallRules, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/firewall/l3FirewallRules"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -3117,7 +3117,7 @@ func (s *ApplianceService) GetNetworkApplianceFirewallL3FirewallRules(networkID 
 */
 func (s *ApplianceService) GetNetworkApplianceFirewallL7FirewallRules(networkID string) (*ResponseApplianceGetNetworkApplianceFirewallL7FirewallRules, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/firewall/l7FirewallRules"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -3150,7 +3150,7 @@ func (s *ApplianceService) GetNetworkApplianceFirewallL7FirewallRules(networkID 
 */
 func (s *ApplianceService) GetNetworkApplianceFirewallL7FirewallRulesApplicationCategories(networkID string) (*ResponseApplianceGetNetworkApplianceFirewallL7FirewallRulesApplicationCategories, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/firewall/l7FirewallRules/applicationCategories"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -3183,7 +3183,7 @@ func (s *ApplianceService) GetNetworkApplianceFirewallL7FirewallRulesApplication
 */
 func (s *ApplianceService) GetNetworkApplianceFirewallOneToManyNatRules(networkID string) (*ResponseApplianceGetNetworkApplianceFirewallOneToManyNatRules, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/firewall/oneToManyNatRules"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -3216,7 +3216,7 @@ func (s *ApplianceService) GetNetworkApplianceFirewallOneToManyNatRules(networkI
 */
 func (s *ApplianceService) GetNetworkApplianceFirewallOneToOneNatRules(networkID string) (*ResponseApplianceGetNetworkApplianceFirewallOneToOneNatRules, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/firewall/oneToOneNatRules"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -3249,7 +3249,7 @@ func (s *ApplianceService) GetNetworkApplianceFirewallOneToOneNatRules(networkID
 */
 func (s *ApplianceService) GetNetworkApplianceFirewallPortForwardingRules(networkID string) (*ResponseApplianceGetNetworkApplianceFirewallPortForwardingRules, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/firewall/portForwardingRules"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -3282,7 +3282,7 @@ func (s *ApplianceService) GetNetworkApplianceFirewallPortForwardingRules(networ
 */
 func (s *ApplianceService) GetNetworkApplianceFirewallSettings(networkID string) (*ResponseApplianceGetNetworkApplianceFirewallSettings, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/firewall/settings"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -3315,7 +3315,7 @@ func (s *ApplianceService) GetNetworkApplianceFirewallSettings(networkID string)
 */
 func (s *ApplianceService) GetNetworkAppliancePorts(networkID string) (*ResponseApplianceGetNetworkAppliancePorts, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/ports"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -3349,7 +3349,7 @@ func (s *ApplianceService) GetNetworkAppliancePorts(networkID string) (*Response
 */
 func (s *ApplianceService) GetNetworkAppliancePort(networkID string, portID string) (*ResponseApplianceGetNetworkAppliancePort, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/ports/{portId}"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{portId}", fmt.Sprintf("%v", portID), -1)
 
@@ -3383,7 +3383,7 @@ func (s *ApplianceService) GetNetworkAppliancePort(networkID string, portID stri
 */
 func (s *ApplianceService) GetNetworkAppliancePrefixesDelegatedStatics(networkID string) (*ResponseApplianceGetNetworkAppliancePrefixesDelegatedStatics, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/prefixes/delegated/statics"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -3417,7 +3417,7 @@ func (s *ApplianceService) GetNetworkAppliancePrefixesDelegatedStatics(networkID
 */
 func (s *ApplianceService) GetNetworkAppliancePrefixesDelegatedStatic(networkID string, staticDelegatedPrefixID string) (*ResponseApplianceGetNetworkAppliancePrefixesDelegatedStatic, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/prefixes/delegated/statics/{staticDelegatedPrefixId}"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{staticDelegatedPrefixId}", fmt.Sprintf("%v", staticDelegatedPrefixID), -1)
 
@@ -3451,7 +3451,7 @@ func (s *ApplianceService) GetNetworkAppliancePrefixesDelegatedStatic(networkID 
 */
 func (s *ApplianceService) GetNetworkApplianceRfProfiles(networkID string) (*ResponseApplianceGetNetworkApplianceRfProfiles, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/rfProfiles"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -3485,7 +3485,7 @@ func (s *ApplianceService) GetNetworkApplianceRfProfiles(networkID string) (*Res
 */
 func (s *ApplianceService) GetNetworkApplianceRfProfile(networkID string, rfProfileID string) (*ResponseApplianceGetNetworkApplianceRfProfile, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/rfProfiles/{rfProfileId}"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{rfProfileId}", fmt.Sprintf("%v", rfProfileID), -1)
 
@@ -3520,7 +3520,7 @@ func (s *ApplianceService) GetNetworkApplianceRfProfile(networkID string, rfProf
 */
 func (s *ApplianceService) GetNetworkApplianceSecurityEvents(networkID string, getNetworkApplianceSecurityEventsQueryParams *GetNetworkApplianceSecurityEventsQueryParams) (*ResponseApplianceGetNetworkApplianceSecurityEvents, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/security/events"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	queryString, _ := query.Values(getNetworkApplianceSecurityEventsQueryParams)
@@ -3555,7 +3555,7 @@ func (s *ApplianceService) GetNetworkApplianceSecurityEvents(networkID string, g
 */
 func (s *ApplianceService) GetNetworkApplianceSecurityIntrusion(networkID string) (*ResponseApplianceGetNetworkApplianceSecurityIntrusion, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/security/intrusion"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -3588,7 +3588,7 @@ func (s *ApplianceService) GetNetworkApplianceSecurityIntrusion(networkID string
 */
 func (s *ApplianceService) GetNetworkApplianceSecurityMalware(networkID string) (*ResponseApplianceGetNetworkApplianceSecurityMalware, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/security/malware"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -3621,7 +3621,7 @@ func (s *ApplianceService) GetNetworkApplianceSecurityMalware(networkID string) 
 */
 func (s *ApplianceService) GetNetworkApplianceSettings(networkID string) (*ResponseApplianceGetNetworkApplianceSettings, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/settings"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -3654,7 +3654,7 @@ func (s *ApplianceService) GetNetworkApplianceSettings(networkID string) (*Respo
 */
 func (s *ApplianceService) GetNetworkApplianceSingleLan(networkID string) (*ResponseApplianceGetNetworkApplianceSingleLan, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/singleLan"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -3687,7 +3687,7 @@ func (s *ApplianceService) GetNetworkApplianceSingleLan(networkID string) (*Resp
 */
 func (s *ApplianceService) GetNetworkApplianceSSIDs(networkID string) (*ResponseApplianceGetNetworkApplianceSSIDs, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/ssids"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -3721,7 +3721,7 @@ func (s *ApplianceService) GetNetworkApplianceSSIDs(networkID string) (*Response
 */
 func (s *ApplianceService) GetNetworkApplianceSSID(networkID string, number string) (*ResponseApplianceGetNetworkApplianceSSID, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/ssids/{number}"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{number}", fmt.Sprintf("%v", number), -1)
 
@@ -3755,7 +3755,7 @@ func (s *ApplianceService) GetNetworkApplianceSSID(networkID string, number stri
 */
 func (s *ApplianceService) GetNetworkApplianceStaticRoutes(networkID string) (*ResponseApplianceGetNetworkApplianceStaticRoutes, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/staticRoutes"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -3789,7 +3789,7 @@ func (s *ApplianceService) GetNetworkApplianceStaticRoutes(networkID string) (*R
 */
 func (s *ApplianceService) GetNetworkApplianceStaticRoute(networkID string, staticRouteID string) (*ResponseApplianceGetNetworkApplianceStaticRoute, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/staticRoutes/{staticRouteId}"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{staticRouteId}", fmt.Sprintf("%v", staticRouteID), -1)
 
@@ -3823,7 +3823,7 @@ func (s *ApplianceService) GetNetworkApplianceStaticRoute(networkID string, stat
 */
 func (s *ApplianceService) GetNetworkApplianceTrafficShaping(networkID string) (*ResponseApplianceGetNetworkApplianceTrafficShaping, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/trafficShaping"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -3856,7 +3856,7 @@ func (s *ApplianceService) GetNetworkApplianceTrafficShaping(networkID string) (
 */
 func (s *ApplianceService) GetNetworkApplianceTrafficShapingCustomPerformanceClasses(networkID string) (*ResponseApplianceGetNetworkApplianceTrafficShapingCustomPerformanceClasses, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/trafficShaping/customPerformanceClasses"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -3890,7 +3890,7 @@ func (s *ApplianceService) GetNetworkApplianceTrafficShapingCustomPerformanceCla
 */
 func (s *ApplianceService) GetNetworkApplianceTrafficShapingCustomPerformanceClass(networkID string, customPerformanceClassID string) (*ResponseApplianceGetNetworkApplianceTrafficShapingCustomPerformanceClass, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/trafficShaping/customPerformanceClasses/{customPerformanceClassId}"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{customPerformanceClassId}", fmt.Sprintf("%v", customPerformanceClassID), -1)
 
@@ -3924,7 +3924,7 @@ func (s *ApplianceService) GetNetworkApplianceTrafficShapingCustomPerformanceCla
 */
 func (s *ApplianceService) GetNetworkApplianceTrafficShapingRules(networkID string) (*ResponseApplianceGetNetworkApplianceTrafficShapingRules, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/trafficShaping/rules"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -3957,7 +3957,7 @@ func (s *ApplianceService) GetNetworkApplianceTrafficShapingRules(networkID stri
 */
 func (s *ApplianceService) GetNetworkApplianceTrafficShapingUplinkBandwidth(networkID string) (*ResponseApplianceGetNetworkApplianceTrafficShapingUplinkBandwidth, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/trafficShaping/uplinkBandwidth"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -3990,7 +3990,7 @@ func (s *ApplianceService) GetNetworkApplianceTrafficShapingUplinkBandwidth(netw
 */
 func (s *ApplianceService) GetNetworkApplianceTrafficShapingUplinkSelection(networkID string) (*ResponseApplianceGetNetworkApplianceTrafficShapingUplinkSelection, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/trafficShaping/uplinkSelection"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -4024,7 +4024,7 @@ func (s *ApplianceService) GetNetworkApplianceTrafficShapingUplinkSelection(netw
 */
 func (s *ApplianceService) GetNetworkApplianceUplinksUsageHistory(networkID string, getNetworkApplianceUplinksUsageHistoryQueryParams *GetNetworkApplianceUplinksUsageHistoryQueryParams) (*ResponseApplianceGetNetworkApplianceUplinksUsageHistory, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/uplinks/usageHistory"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	queryString, _ := query.Values(getNetworkApplianceUplinksUsageHistoryQueryParams)
@@ -4059,7 +4059,7 @@ func (s *ApplianceService) GetNetworkApplianceUplinksUsageHistory(networkID stri
 */
 func (s *ApplianceService) GetNetworkApplianceVLANs(networkID string) (*ResponseApplianceGetNetworkApplianceVLANs, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/vlans"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -4092,7 +4092,7 @@ func (s *ApplianceService) GetNetworkApplianceVLANs(networkID string) (*Response
 */
 func (s *ApplianceService) GetNetworkApplianceVLANsSettings(networkID string) (*ResponseApplianceGetNetworkApplianceVLANsSettings, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/vlans/settings"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -4126,7 +4126,7 @@ func (s *ApplianceService) GetNetworkApplianceVLANsSettings(networkID string) (*
 */
 func (s *ApplianceService) GetNetworkApplianceVLAN(networkID string, vlanID string) (*ResponseApplianceGetNetworkApplianceVLAN, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/vlans/{vlanId}"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{vlanId}", fmt.Sprintf("%v", vlanID), -1)
 
@@ -4160,7 +4160,7 @@ func (s *ApplianceService) GetNetworkApplianceVLAN(networkID string, vlanID stri
 */
 func (s *ApplianceService) GetNetworkApplianceVpnBgp(networkID string) (*ResponseApplianceGetNetworkApplianceVpnBgp, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/vpn/bgp"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -4193,7 +4193,7 @@ func (s *ApplianceService) GetNetworkApplianceVpnBgp(networkID string) (*Respons
 */
 func (s *ApplianceService) GetNetworkApplianceVpnSiteToSiteVpn(networkID string) (*ResponseApplianceGetNetworkApplianceVpnSiteToSiteVpn, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/vpn/siteToSiteVpn"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -4226,7 +4226,7 @@ func (s *ApplianceService) GetNetworkApplianceVpnSiteToSiteVpn(networkID string)
 */
 func (s *ApplianceService) GetNetworkApplianceWarmSpare(networkID string) (*ResponseApplianceGetNetworkApplianceWarmSpare, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/warmSpare"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -4260,7 +4260,7 @@ func (s *ApplianceService) GetNetworkApplianceWarmSpare(networkID string) (*Resp
 */
 func (s *ApplianceService) GetOrganizationApplianceSecurityEvents(organizationID string, getOrganizationApplianceSecurityEventsQueryParams *GetOrganizationApplianceSecurityEventsQueryParams) (*ResponseApplianceGetOrganizationApplianceSecurityEvents, *resty.Response, error) {
 	path := "/api/v1/organizations/{organizationId}/appliance/security/events"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{organizationId}", fmt.Sprintf("%v", organizationID), -1)
 
 	queryString, _ := query.Values(getOrganizationApplianceSecurityEventsQueryParams)
@@ -4295,7 +4295,7 @@ func (s *ApplianceService) GetOrganizationApplianceSecurityEvents(organizationID
 */
 func (s *ApplianceService) GetOrganizationApplianceSecurityIntrusion(organizationID string) (*ResponseApplianceGetOrganizationApplianceSecurityIntrusion, *resty.Response, error) {
 	path := "/api/v1/organizations/{organizationId}/appliance/security/intrusion"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{organizationId}", fmt.Sprintf("%v", organizationID), -1)
 
 	response, err := s.client.R().
@@ -4329,7 +4329,7 @@ func (s *ApplianceService) GetOrganizationApplianceSecurityIntrusion(organizatio
 */
 func (s *ApplianceService) GetOrganizationApplianceTrafficShapingVpnExclusionsByNetwork(organizationID string, getOrganizationApplianceTrafficShapingVpnExclusionsByNetworkQueryParams *GetOrganizationApplianceTrafficShapingVpnExclusionsByNetworkQueryParams) (*ResponseApplianceGetOrganizationApplianceTrafficShapingVpnExclusionsByNetwork, *resty.Response, error) {
 	path := "/api/v1/organizations/{organizationId}/appliance/trafficShaping/vpnExclusions/byNetwork"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{organizationId}", fmt.Sprintf("%v", organizationID), -1)
 
 	queryString, _ := query.Values(getOrganizationApplianceTrafficShapingVpnExclusionsByNetworkQueryParams)
@@ -4365,7 +4365,7 @@ func (s *ApplianceService) GetOrganizationApplianceTrafficShapingVpnExclusionsBy
 */
 func (s *ApplianceService) GetOrganizationApplianceUplinkStatuses(organizationID string, getOrganizationApplianceUplinkStatusesQueryParams *GetOrganizationApplianceUplinkStatusesQueryParams) (*ResponseApplianceGetOrganizationApplianceUplinkStatuses, *resty.Response, error) {
 	path := "/api/v1/organizations/{organizationId}/appliance/uplink/statuses"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{organizationId}", fmt.Sprintf("%v", organizationID), -1)
 
 	queryString, _ := query.Values(getOrganizationApplianceUplinkStatusesQueryParams)
@@ -4400,7 +4400,7 @@ func (s *ApplianceService) GetOrganizationApplianceUplinkStatuses(organizationID
 */
 func (s *ApplianceService) GetOrganizationApplianceUplinksStatusesOverview(organizationID string) (*ResponseApplianceGetOrganizationApplianceUplinksStatusesOverview, *resty.Response, error) {
 	path := "/api/v1/organizations/{organizationId}/appliance/uplinks/statuses/overview"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{organizationId}", fmt.Sprintf("%v", organizationID), -1)
 
 	response, err := s.client.R().
@@ -4434,7 +4434,7 @@ func (s *ApplianceService) GetOrganizationApplianceUplinksStatusesOverview(organ
 */
 func (s *ApplianceService) GetOrganizationApplianceUplinksUsageByNetwork(organizationID string, getOrganizationApplianceUplinksUsageByNetworkQueryParams *GetOrganizationApplianceUplinksUsageByNetworkQueryParams) (*ResponseApplianceGetOrganizationApplianceUplinksUsageByNetwork, *resty.Response, error) {
 	path := "/api/v1/organizations/{organizationId}/appliance/uplinks/usage/byNetwork"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{organizationId}", fmt.Sprintf("%v", organizationID), -1)
 
 	queryString, _ := query.Values(getOrganizationApplianceUplinksUsageByNetworkQueryParams)
@@ -4470,7 +4470,7 @@ func (s *ApplianceService) GetOrganizationApplianceUplinksUsageByNetwork(organiz
 */
 func (s *ApplianceService) GetOrganizationApplianceVpnStats(organizationID string, getOrganizationApplianceVpnStatsQueryParams *GetOrganizationApplianceVpnStatsQueryParams) (*ResponseApplianceGetOrganizationApplianceVpnStats, *resty.Response, error) {
 	path := "/api/v1/organizations/{organizationId}/appliance/vpn/stats"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{organizationId}", fmt.Sprintf("%v", organizationID), -1)
 
 	queryString, _ := query.Values(getOrganizationApplianceVpnStatsQueryParams)
@@ -4506,7 +4506,7 @@ func (s *ApplianceService) GetOrganizationApplianceVpnStats(organizationID strin
 */
 func (s *ApplianceService) GetOrganizationApplianceVpnStatuses(organizationID string, getOrganizationApplianceVpnStatusesQueryParams *GetOrganizationApplianceVpnStatusesQueryParams) (*ResponseApplianceGetOrganizationApplianceVpnStatuses, *resty.Response, error) {
 	path := "/api/v1/organizations/{organizationId}/appliance/vpn/statuses"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{organizationId}", fmt.Sprintf("%v", organizationID), -1)
 
 	queryString, _ := query.Values(getOrganizationApplianceVpnStatusesQueryParams)
@@ -4541,7 +4541,7 @@ func (s *ApplianceService) GetOrganizationApplianceVpnStatuses(organizationID st
 */
 func (s *ApplianceService) GetOrganizationApplianceVpnThirdPartyVpnpeers(organizationID string) (*ResponseApplianceGetOrganizationApplianceVpnThirdPartyVpnpeers, *resty.Response, error) {
 	path := "/api/v1/organizations/{organizationId}/appliance/vpn/thirdPartyVPNPeers"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{organizationId}", fmt.Sprintf("%v", organizationID), -1)
 
 	response, err := s.client.R().
@@ -4574,7 +4574,7 @@ func (s *ApplianceService) GetOrganizationApplianceVpnThirdPartyVpnpeers(organiz
 */
 func (s *ApplianceService) GetOrganizationApplianceVpnVpnFirewallRules(organizationID string) (*ResponseApplianceGetOrganizationApplianceVpnVpnFirewallRules, *resty.Response, error) {
 	path := "/api/v1/organizations/{organizationId}/appliance/vpn/vpnFirewallRules"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{organizationId}", fmt.Sprintf("%v", organizationID), -1)
 
 	response, err := s.client.R().
@@ -4608,7 +4608,7 @@ func (s *ApplianceService) GetOrganizationApplianceVpnVpnFirewallRules(organizat
 
 func (s *ApplianceService) CreateDeviceApplianceVmxAuthenticationToken(serial string) (*ResponseApplianceCreateDeviceApplianceVmxAuthenticationToken, *resty.Response, error) {
 	path := "/api/v1/devices/{serial}/appliance/vmx/authenticationToken"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{serial}", fmt.Sprintf("%v", serial), -1)
 
 	response, err := s.client.R().
@@ -4642,7 +4642,7 @@ func (s *ApplianceService) CreateDeviceApplianceVmxAuthenticationToken(serial st
 
 func (s *ApplianceService) CreateNetworkAppliancePrefixesDelegatedStatic(networkID string, requestApplianceCreateNetworkAppliancePrefixesDelegatedStatic *RequestApplianceCreateNetworkAppliancePrefixesDelegatedStatic) (*resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/prefixes/delegated/statics"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -4676,7 +4676,7 @@ func (s *ApplianceService) CreateNetworkAppliancePrefixesDelegatedStatic(network
 
 func (s *ApplianceService) CreateNetworkApplianceRfProfile(networkID string, requestApplianceCreateNetworkApplianceRfProfile *RequestApplianceCreateNetworkApplianceRfProfile) (*ResponseApplianceCreateNetworkApplianceRfProfile, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/rfProfiles"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -4711,7 +4711,7 @@ func (s *ApplianceService) CreateNetworkApplianceRfProfile(networkID string, req
 
 func (s *ApplianceService) CreateNetworkApplianceStaticRoute(networkID string, requestApplianceCreateNetworkApplianceStaticRoute *RequestApplianceCreateNetworkApplianceStaticRoute) (*resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/staticRoutes"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -4745,7 +4745,7 @@ func (s *ApplianceService) CreateNetworkApplianceStaticRoute(networkID string, r
 
 func (s *ApplianceService) CreateNetworkApplianceTrafficShapingCustomPerformanceClass(networkID string, requestApplianceCreateNetworkApplianceTrafficShapingCustomPerformanceClass *RequestApplianceCreateNetworkApplianceTrafficShapingCustomPerformanceClass) (*resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/trafficShaping/customPerformanceClasses"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -4779,7 +4779,7 @@ func (s *ApplianceService) CreateNetworkApplianceTrafficShapingCustomPerformance
 
 func (s *ApplianceService) CreateNetworkApplianceVLAN(networkID string, requestApplianceCreateNetworkApplianceVlan *RequestApplianceCreateNetworkApplianceVLAN) (*ResponseApplianceCreateNetworkApplianceVLAN, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/vlans"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -4814,7 +4814,7 @@ func (s *ApplianceService) CreateNetworkApplianceVLAN(networkID string, requestA
 
 func (s *ApplianceService) SwapNetworkApplianceWarmSpare(networkID string) (*resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/warmSpare/swap"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -4845,7 +4845,7 @@ func (s *ApplianceService) SwapNetworkApplianceWarmSpare(networkID string) (*res
 */
 func (s *ApplianceService) UpdateDeviceApplianceRadioSettings(serial string, requestApplianceUpdateDeviceApplianceRadioSettings *RequestApplianceUpdateDeviceApplianceRadioSettings) (*ResponseApplianceUpdateDeviceApplianceRadioSettings, *resty.Response, error) {
 	path := "/api/v1/devices/{serial}/appliance/radio/settings"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{serial}", fmt.Sprintf("%v", serial), -1)
 
 	response, err := s.client.R().
@@ -4877,7 +4877,7 @@ func (s *ApplianceService) UpdateDeviceApplianceRadioSettings(serial string, req
 */
 func (s *ApplianceService) UpdateDeviceApplianceUplinksSettings(serial string, requestApplianceUpdateDeviceApplianceUplinksSettings *RequestApplianceUpdateDeviceApplianceUplinksSettings) (*ResponseApplianceUpdateDeviceApplianceUplinksSettings, *resty.Response, error) {
 	path := "/api/v1/devices/{serial}/appliance/uplinks/settings"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{serial}", fmt.Sprintf("%v", serial), -1)
 
 	response, err := s.client.R().
@@ -4909,7 +4909,7 @@ func (s *ApplianceService) UpdateDeviceApplianceUplinksSettings(serial string, r
 */
 func (s *ApplianceService) UpdateNetworkApplianceConnectivityMonitoringDestinations(networkID string, requestApplianceUpdateNetworkApplianceConnectivityMonitoringDestinations *RequestApplianceUpdateNetworkApplianceConnectivityMonitoringDestinations) (*resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/connectivityMonitoringDestinations"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -4939,7 +4939,7 @@ func (s *ApplianceService) UpdateNetworkApplianceConnectivityMonitoringDestinati
 */
 func (s *ApplianceService) UpdateNetworkApplianceContentFiltering(networkID string, requestApplianceUpdateNetworkApplianceContentFiltering *RequestApplianceUpdateNetworkApplianceContentFiltering) (*resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/contentFiltering"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -4969,7 +4969,7 @@ func (s *ApplianceService) UpdateNetworkApplianceContentFiltering(networkID stri
 */
 func (s *ApplianceService) UpdateNetworkApplianceFirewallCellularFirewallRules(networkID string, requestApplianceUpdateNetworkApplianceFirewallCellularFirewallRules *RequestApplianceUpdateNetworkApplianceFirewallCellularFirewallRules) (*resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/firewall/cellularFirewallRules"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -5000,7 +5000,7 @@ func (s *ApplianceService) UpdateNetworkApplianceFirewallCellularFirewallRules(n
 */
 func (s *ApplianceService) UpdateNetworkApplianceFirewallFirewalledService(networkID string, service string, requestApplianceUpdateNetworkApplianceFirewallFirewalledService *RequestApplianceUpdateNetworkApplianceFirewallFirewalledService) (*resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/firewall/firewalledServices/{service}"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{service}", fmt.Sprintf("%v", service), -1)
 
@@ -5031,7 +5031,7 @@ func (s *ApplianceService) UpdateNetworkApplianceFirewallFirewalledService(netwo
 */
 func (s *ApplianceService) UpdateNetworkApplianceFirewallInboundCellularFirewallRules(networkID string, requestApplianceUpdateNetworkApplianceFirewallInboundCellularFirewallRules *RequestApplianceUpdateNetworkApplianceFirewallInboundCellularFirewallRules) (*ResponseApplianceUpdateNetworkApplianceFirewallInboundCellularFirewallRules, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/firewall/inboundCellularFirewallRules"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -5063,7 +5063,7 @@ func (s *ApplianceService) UpdateNetworkApplianceFirewallInboundCellularFirewall
 */
 func (s *ApplianceService) UpdateNetworkApplianceFirewallInboundFirewallRules(networkID string, requestApplianceUpdateNetworkApplianceFirewallInboundFirewallRules *RequestApplianceUpdateNetworkApplianceFirewallInboundFirewallRules) (*ResponseApplianceUpdateNetworkApplianceFirewallInboundFirewallRules, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/firewall/inboundFirewallRules"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -5095,7 +5095,7 @@ func (s *ApplianceService) UpdateNetworkApplianceFirewallInboundFirewallRules(ne
 */
 func (s *ApplianceService) UpdateNetworkApplianceFirewallL3FirewallRules(networkID string, requestApplianceUpdateNetworkApplianceFirewallL3FirewallRules *RequestApplianceUpdateNetworkApplianceFirewallL3FirewallRules) (*resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/firewall/l3FirewallRules"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -5125,7 +5125,7 @@ func (s *ApplianceService) UpdateNetworkApplianceFirewallL3FirewallRules(network
 */
 func (s *ApplianceService) UpdateNetworkApplianceFirewallL7FirewallRules(networkID string, requestApplianceUpdateNetworkApplianceFirewallL7FirewallRules *RequestApplianceUpdateNetworkApplianceFirewallL7FirewallRules) (*resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/firewall/l7FirewallRules"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -5155,7 +5155,7 @@ func (s *ApplianceService) UpdateNetworkApplianceFirewallL7FirewallRules(network
 */
 func (s *ApplianceService) UpdateNetworkApplianceFirewallOneToManyNatRules(networkID string, requestApplianceUpdateNetworkApplianceFirewallOneToManyNatRules *RequestApplianceUpdateNetworkApplianceFirewallOneToManyNatRules) (*resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/firewall/oneToManyNatRules"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -5185,7 +5185,7 @@ func (s *ApplianceService) UpdateNetworkApplianceFirewallOneToManyNatRules(netwo
 */
 func (s *ApplianceService) UpdateNetworkApplianceFirewallOneToOneNatRules(networkID string, requestApplianceUpdateNetworkApplianceFirewallOneToOneNatRules *RequestApplianceUpdateNetworkApplianceFirewallOneToOneNatRules) (*resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/firewall/oneToOneNatRules"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -5215,7 +5215,7 @@ func (s *ApplianceService) UpdateNetworkApplianceFirewallOneToOneNatRules(networ
 */
 func (s *ApplianceService) UpdateNetworkApplianceFirewallPortForwardingRules(networkID string, requestApplianceUpdateNetworkApplianceFirewallPortForwardingRules *RequestApplianceUpdateNetworkApplianceFirewallPortForwardingRules) (*resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/firewall/portForwardingRules"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -5245,7 +5245,7 @@ func (s *ApplianceService) UpdateNetworkApplianceFirewallPortForwardingRules(net
 */
 func (s *ApplianceService) UpdateNetworkApplianceFirewallSettings(networkID string, requestApplianceUpdateNetworkApplianceFirewallSettings *RequestApplianceUpdateNetworkApplianceFirewallSettings) (*resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/firewall/settings"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -5276,7 +5276,7 @@ func (s *ApplianceService) UpdateNetworkApplianceFirewallSettings(networkID stri
 */
 func (s *ApplianceService) UpdateNetworkAppliancePort(networkID string, portID string, requestApplianceUpdateNetworkAppliancePort *RequestApplianceUpdateNetworkAppliancePort) (*ResponseApplianceUpdateNetworkAppliancePort, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/ports/{portId}"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{portId}", fmt.Sprintf("%v", portID), -1)
 
@@ -5310,7 +5310,7 @@ func (s *ApplianceService) UpdateNetworkAppliancePort(networkID string, portID s
 */
 func (s *ApplianceService) UpdateNetworkAppliancePrefixesDelegatedStatic(networkID string, staticDelegatedPrefixID string, requestApplianceUpdateNetworkAppliancePrefixesDelegatedStatic *RequestApplianceUpdateNetworkAppliancePrefixesDelegatedStatic) (*resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/prefixes/delegated/statics/{staticDelegatedPrefixId}"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{staticDelegatedPrefixId}", fmt.Sprintf("%v", staticDelegatedPrefixID), -1)
 
@@ -5342,7 +5342,7 @@ func (s *ApplianceService) UpdateNetworkAppliancePrefixesDelegatedStatic(network
 */
 func (s *ApplianceService) UpdateNetworkApplianceRfProfile(networkID string, rfProfileID string, requestApplianceUpdateNetworkApplianceRfProfile *RequestApplianceUpdateNetworkApplianceRfProfile) (*ResponseApplianceUpdateNetworkApplianceRfProfile, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/rfProfiles/{rfProfileId}"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{rfProfileId}", fmt.Sprintf("%v", rfProfileID), -1)
 
@@ -5375,7 +5375,7 @@ func (s *ApplianceService) UpdateNetworkApplianceRfProfile(networkID string, rfP
 */
 func (s *ApplianceService) UpdateNetworkApplianceSecurityIntrusion(networkID string, requestApplianceUpdateNetworkApplianceSecurityIntrusion *RequestApplianceUpdateNetworkApplianceSecurityIntrusion) (*ResponseApplianceUpdateNetworkApplianceSecurityIntrusion, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/security/intrusion"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -5407,7 +5407,7 @@ func (s *ApplianceService) UpdateNetworkApplianceSecurityIntrusion(networkID str
 */
 func (s *ApplianceService) UpdateNetworkApplianceSecurityMalware(networkID string, requestApplianceUpdateNetworkApplianceSecurityMalware *RequestApplianceUpdateNetworkApplianceSecurityMalware) (*ResponseApplianceUpdateNetworkApplianceSecurityMalware, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/security/malware"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -5439,7 +5439,7 @@ func (s *ApplianceService) UpdateNetworkApplianceSecurityMalware(networkID strin
 */
 func (s *ApplianceService) UpdateNetworkApplianceSettings(networkID string, requestApplianceUpdateNetworkApplianceSettings *RequestApplianceUpdateNetworkApplianceSettings) (*ResponseApplianceUpdateNetworkApplianceSettings, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/settings"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -5471,7 +5471,7 @@ func (s *ApplianceService) UpdateNetworkApplianceSettings(networkID string, requ
 */
 func (s *ApplianceService) UpdateNetworkApplianceSingleLan(networkID string, requestApplianceUpdateNetworkApplianceSingleLan *RequestApplianceUpdateNetworkApplianceSingleLan) (*ResponseApplianceUpdateNetworkApplianceSingleLan, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/singleLan"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -5504,7 +5504,7 @@ func (s *ApplianceService) UpdateNetworkApplianceSingleLan(networkID string, req
 */
 func (s *ApplianceService) UpdateNetworkApplianceSSID(networkID string, number string, requestApplianceUpdateNetworkApplianceSsid *RequestApplianceUpdateNetworkApplianceSSID) (*ResponseApplianceUpdateNetworkApplianceSSID, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/ssids/{number}"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{number}", fmt.Sprintf("%v", number), -1)
 
@@ -5538,7 +5538,7 @@ func (s *ApplianceService) UpdateNetworkApplianceSSID(networkID string, number s
 */
 func (s *ApplianceService) UpdateNetworkApplianceStaticRoute(networkID string, staticRouteID string, requestApplianceUpdateNetworkApplianceStaticRoute *RequestApplianceUpdateNetworkApplianceStaticRoute) (*resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/staticRoutes/{staticRouteId}"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{staticRouteId}", fmt.Sprintf("%v", staticRouteID), -1)
 
@@ -5569,7 +5569,7 @@ func (s *ApplianceService) UpdateNetworkApplianceStaticRoute(networkID string, s
 */
 func (s *ApplianceService) UpdateNetworkApplianceTrafficShaping(networkID string, requestApplianceUpdateNetworkApplianceTrafficShaping *RequestApplianceUpdateNetworkApplianceTrafficShaping) (*resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/trafficShaping"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -5600,7 +5600,7 @@ func (s *ApplianceService) UpdateNetworkApplianceTrafficShaping(networkID string
 */
 func (s *ApplianceService) UpdateNetworkApplianceTrafficShapingCustomPerformanceClass(networkID string, customPerformanceClassID string, requestApplianceUpdateNetworkApplianceTrafficShapingCustomPerformanceClass *RequestApplianceUpdateNetworkApplianceTrafficShapingCustomPerformanceClass) (*ResponseApplianceUpdateNetworkApplianceTrafficShapingCustomPerformanceClass, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/trafficShaping/customPerformanceClasses/{customPerformanceClassId}"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{customPerformanceClassId}", fmt.Sprintf("%v", customPerformanceClassID), -1)
 
@@ -5633,7 +5633,7 @@ func (s *ApplianceService) UpdateNetworkApplianceTrafficShapingCustomPerformance
 */
 func (s *ApplianceService) UpdateNetworkApplianceTrafficShapingRules(networkID string, requestApplianceUpdateNetworkApplianceTrafficShapingRules *RequestApplianceUpdateNetworkApplianceTrafficShapingRules) (*resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/trafficShaping/rules"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -5663,7 +5663,7 @@ func (s *ApplianceService) UpdateNetworkApplianceTrafficShapingRules(networkID s
 */
 func (s *ApplianceService) UpdateNetworkApplianceTrafficShapingUplinkBandwidth(networkID string, requestApplianceUpdateNetworkApplianceTrafficShapingUplinkBandwidth *RequestApplianceUpdateNetworkApplianceTrafficShapingUplinkBandwidth) (*resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/trafficShaping/uplinkBandwidth"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -5693,7 +5693,7 @@ func (s *ApplianceService) UpdateNetworkApplianceTrafficShapingUplinkBandwidth(n
 */
 func (s *ApplianceService) UpdateNetworkApplianceTrafficShapingUplinkSelection(networkID string, requestApplianceUpdateNetworkApplianceTrafficShapingUplinkSelection *RequestApplianceUpdateNetworkApplianceTrafficShapingUplinkSelection) (*ResponseApplianceUpdateNetworkApplianceTrafficShapingUplinkSelection, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/trafficShaping/uplinkSelection"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -5725,7 +5725,7 @@ func (s *ApplianceService) UpdateNetworkApplianceTrafficShapingUplinkSelection(n
 */
 func (s *ApplianceService) UpdateNetworkApplianceTrafficShapingVpnExclusions(networkID string, requestApplianceUpdateNetworkApplianceTrafficShapingVpnExclusions *RequestApplianceUpdateNetworkApplianceTrafficShapingVpnExclusions) (*ResponseApplianceUpdateNetworkApplianceTrafficShapingVpnExclusions, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/trafficShaping/vpnExclusions"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -5757,7 +5757,7 @@ func (s *ApplianceService) UpdateNetworkApplianceTrafficShapingVpnExclusions(net
 */
 func (s *ApplianceService) UpdateNetworkApplianceVLANsSettings(networkID string, requestApplianceUpdateNetworkApplianceVlansSettings *RequestApplianceUpdateNetworkApplianceVLANsSettings) (*ResponseApplianceUpdateNetworkApplianceVLANsSettings, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/vlans/settings"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -5790,7 +5790,7 @@ func (s *ApplianceService) UpdateNetworkApplianceVLANsSettings(networkID string,
 */
 func (s *ApplianceService) UpdateNetworkApplianceVLAN(networkID string, vlanID string, requestApplianceUpdateNetworkApplianceVlan *RequestApplianceUpdateNetworkApplianceVLAN) (*ResponseApplianceUpdateNetworkApplianceVLAN, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/vlans/{vlanId}"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{vlanId}", fmt.Sprintf("%v", vlanID), -1)
 
@@ -5823,7 +5823,7 @@ func (s *ApplianceService) UpdateNetworkApplianceVLAN(networkID string, vlanID s
 */
 func (s *ApplianceService) UpdateNetworkApplianceVpnBgp(networkID string, requestApplianceUpdateNetworkApplianceVpnBgp *RequestApplianceUpdateNetworkApplianceVpnBgp) (*resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/vpn/bgp"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -5853,7 +5853,7 @@ func (s *ApplianceService) UpdateNetworkApplianceVpnBgp(networkID string, reques
 */
 func (s *ApplianceService) UpdateNetworkApplianceVpnSiteToSiteVpn(networkID string, requestApplianceUpdateNetworkApplianceVpnSiteToSiteVpn *RequestApplianceUpdateNetworkApplianceVpnSiteToSiteVpn) (*ResponseApplianceUpdateNetworkApplianceVpnSiteToSiteVpn, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/vpn/siteToSiteVpn"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -5885,7 +5885,7 @@ func (s *ApplianceService) UpdateNetworkApplianceVpnSiteToSiteVpn(networkID stri
 */
 func (s *ApplianceService) UpdateNetworkApplianceWarmSpare(networkID string, requestApplianceUpdateNetworkApplianceWarmSpare *RequestApplianceUpdateNetworkApplianceWarmSpare) (*resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/appliance/warmSpare"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -5915,7 +5915,7 @@ func (s *ApplianceService) UpdateNetworkApplianceWarmSpare(networkID string, req
 */
 func (s *ApplianceService) UpdateOrganizationApplianceSecurityIntrusion(organizationID string, requestApplianceUpdateOrganizationApplianceSecurityIntrusion *RequestApplianceUpdateOrganizationApplianceSecurityIntrusion) (*resty.Response, error) {
 	path := "/api/v1/organizations/{organizationId}/appliance/security/intrusion"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{organizationId}", fmt.Sprintf("%v", organizationID), -1)
 
 	response, err := s.client.R().
@@ -5945,7 +5945,7 @@ func (s *ApplianceService) UpdateOrganizationApplianceSecurityIntrusion(organiza
 */
 func (s *ApplianceService) UpdateOrganizationApplianceVpnThirdPartyVpnpeers(organizationID string, requestApplianceUpdateOrganizationApplianceVpnThirdPartyVpnpeers *RequestApplianceUpdateOrganizationApplianceVpnThirdPartyVpnpeers) (*resty.Response, error) {
 	path := "/api/v1/organizations/{organizationId}/appliance/vpn/thirdPartyVPNPeers"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{organizationId}", fmt.Sprintf("%v", organizationID), -1)
 
 	response, err := s.client.R().
@@ -5975,7 +5975,7 @@ func (s *ApplianceService) UpdateOrganizationApplianceVpnThirdPartyVpnpeers(orga
 */
 func (s *ApplianceService) UpdateOrganizationApplianceVpnVpnFirewallRules(organizationID string, requestApplianceUpdateOrganizationApplianceVpnVpnFirewallRules *RequestApplianceUpdateOrganizationApplianceVpnVpnFirewallRules) (*ResponseApplianceUpdateOrganizationApplianceVpnVpnFirewallRules, *resty.Response, error) {
 	path := "/api/v1/organizations/{organizationId}/appliance/vpn/vpnFirewallRules"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{organizationId}", fmt.Sprintf("%v", organizationID), -1)
 
 	response, err := s.client.R().
@@ -6011,7 +6011,7 @@ func (s *ApplianceService) UpdateOrganizationApplianceVpnVpnFirewallRules(organi
 func (s *ApplianceService) DeleteNetworkAppliancePrefixesDelegatedStatic(networkID string, staticDelegatedPrefixID string) (*resty.Response, error) {
 	//networkID string,staticDelegatedPrefixID string
 	path := "/api/v1/networks/{networkId}/appliance/prefixes/delegated/statics/{staticDelegatedPrefixId}"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{staticDelegatedPrefixId}", fmt.Sprintf("%v", staticDelegatedPrefixID), -1)
 
@@ -6045,7 +6045,7 @@ func (s *ApplianceService) DeleteNetworkAppliancePrefixesDelegatedStatic(network
 func (s *ApplianceService) DeleteNetworkApplianceRfProfile(networkID string, rfProfileID string) (*resty.Response, error) {
 	//networkID string,rfProfileID string
 	path := "/api/v1/networks/{networkId}/appliance/rfProfiles/{rfProfileId}"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{rfProfileId}", fmt.Sprintf("%v", rfProfileID), -1)
 
@@ -6079,7 +6079,7 @@ func (s *ApplianceService) DeleteNetworkApplianceRfProfile(networkID string, rfP
 func (s *ApplianceService) DeleteNetworkApplianceStaticRoute(networkID string, staticRouteID string) (*resty.Response, error) {
 	//networkID string,staticRouteID string
 	path := "/api/v1/networks/{networkId}/appliance/staticRoutes/{staticRouteId}"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{staticRouteId}", fmt.Sprintf("%v", staticRouteID), -1)
 
@@ -6113,7 +6113,7 @@ func (s *ApplianceService) DeleteNetworkApplianceStaticRoute(networkID string, s
 func (s *ApplianceService) DeleteNetworkApplianceTrafficShapingCustomPerformanceClass(networkID string, customPerformanceClassID string) (*resty.Response, error) {
 	//networkID string,customPerformanceClassID string
 	path := "/api/v1/networks/{networkId}/appliance/trafficShaping/customPerformanceClasses/{customPerformanceClassId}"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{customPerformanceClassId}", fmt.Sprintf("%v", customPerformanceClassID), -1)
 
@@ -6147,7 +6147,7 @@ func (s *ApplianceService) DeleteNetworkApplianceTrafficShapingCustomPerformance
 func (s *ApplianceService) DeleteNetworkApplianceVLAN(networkID string, vlanID string) (*resty.Response, error) {
 	//networkID string,vlanID string
 	path := "/api/v1/networks/{networkId}/appliance/vlans/{vlanId}"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{vlanId}", fmt.Sprintf("%v", vlanID), -1)
 

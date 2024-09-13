@@ -706,7 +706,7 @@ type RequestCameraUpdateOrganizationCameraRoleAppliedOrgWide struct {
 */
 func (s *CameraService) GetDeviceCameraAnalyticsLive(serial string) (*ResponseCameraGetDeviceCameraAnalyticsLive, *resty.Response, error) {
 	path := "/api/v1/devices/{serial}/camera/analytics/live"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{serial}", fmt.Sprintf("%v", serial), -1)
 
 	response, err := s.client.R().
@@ -740,7 +740,7 @@ func (s *CameraService) GetDeviceCameraAnalyticsLive(serial string) (*ResponseCa
 */
 func (s *CameraService) GetDeviceCameraAnalyticsOverview(serial string, getDeviceCameraAnalyticsOverviewQueryParams *GetDeviceCameraAnalyticsOverviewQueryParams) (*ResponseCameraGetDeviceCameraAnalyticsOverview, *resty.Response, error) {
 	path := "/api/v1/devices/{serial}/camera/analytics/overview"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{serial}", fmt.Sprintf("%v", serial), -1)
 
 	queryString, _ := query.Values(getDeviceCameraAnalyticsOverviewQueryParams)
@@ -776,7 +776,7 @@ func (s *CameraService) GetDeviceCameraAnalyticsOverview(serial string, getDevic
 */
 func (s *CameraService) GetDeviceCameraAnalyticsRecent(serial string, getDeviceCameraAnalyticsRecentQueryParams *GetDeviceCameraAnalyticsRecentQueryParams) (*ResponseCameraGetDeviceCameraAnalyticsRecent, *resty.Response, error) {
 	path := "/api/v1/devices/{serial}/camera/analytics/recent"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{serial}", fmt.Sprintf("%v", serial), -1)
 
 	queryString, _ := query.Values(getDeviceCameraAnalyticsRecentQueryParams)
@@ -811,7 +811,7 @@ func (s *CameraService) GetDeviceCameraAnalyticsRecent(serial string, getDeviceC
 */
 func (s *CameraService) GetDeviceCameraAnalyticsZones(serial string) (*ResponseCameraGetDeviceCameraAnalyticsZones, *resty.Response, error) {
 	path := "/api/v1/devices/{serial}/camera/analytics/zones"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{serial}", fmt.Sprintf("%v", serial), -1)
 
 	response, err := s.client.R().
@@ -846,7 +846,7 @@ func (s *CameraService) GetDeviceCameraAnalyticsZones(serial string) (*ResponseC
 */
 func (s *CameraService) GetDeviceCameraAnalyticsZoneHistory(serial string, zoneID string, getDeviceCameraAnalyticsZoneHistoryQueryParams *GetDeviceCameraAnalyticsZoneHistoryQueryParams) (*ResponseCameraGetDeviceCameraAnalyticsZoneHistory, *resty.Response, error) {
 	path := "/api/v1/devices/{serial}/camera/analytics/zones/{zoneId}/history"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{serial}", fmt.Sprintf("%v", serial), -1)
 	path = strings.Replace(path, "{zoneId}", fmt.Sprintf("%v", zoneID), -1)
 
@@ -882,7 +882,7 @@ func (s *CameraService) GetDeviceCameraAnalyticsZoneHistory(serial string, zoneI
 */
 func (s *CameraService) GetDeviceCameraCustomAnalytics(serial string) (*ResponseCameraGetDeviceCameraCustomAnalytics, *resty.Response, error) {
 	path := "/api/v1/devices/{serial}/camera/customAnalytics"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{serial}", fmt.Sprintf("%v", serial), -1)
 
 	response, err := s.client.R().
@@ -915,7 +915,7 @@ func (s *CameraService) GetDeviceCameraCustomAnalytics(serial string) (*Response
 */
 func (s *CameraService) GetDeviceCameraQualityAndRetention(serial string) (*ResponseCameraGetDeviceCameraQualityAndRetention, *resty.Response, error) {
 	path := "/api/v1/devices/{serial}/camera/qualityAndRetention"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{serial}", fmt.Sprintf("%v", serial), -1)
 
 	response, err := s.client.R().
@@ -948,7 +948,7 @@ func (s *CameraService) GetDeviceCameraQualityAndRetention(serial string) (*Resp
 */
 func (s *CameraService) GetDeviceCameraSense(serial string) (*ResponseCameraGetDeviceCameraSense, *resty.Response, error) {
 	path := "/api/v1/devices/{serial}/camera/sense"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{serial}", fmt.Sprintf("%v", serial), -1)
 
 	response, err := s.client.R().
@@ -981,7 +981,7 @@ func (s *CameraService) GetDeviceCameraSense(serial string) (*ResponseCameraGetD
 */
 func (s *CameraService) GetDeviceCameraSenseObjectDetectionModels(serial string) (*ResponseCameraGetDeviceCameraSenseObjectDetectionModels, *resty.Response, error) {
 	path := "/api/v1/devices/{serial}/camera/sense/objectDetectionModels"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{serial}", fmt.Sprintf("%v", serial), -1)
 
 	response, err := s.client.R().
@@ -1014,7 +1014,7 @@ func (s *CameraService) GetDeviceCameraSenseObjectDetectionModels(serial string)
 */
 func (s *CameraService) GetDeviceCameraVideoSettings(serial string) (*ResponseCameraGetDeviceCameraVideoSettings, *resty.Response, error) {
 	path := "/api/v1/devices/{serial}/camera/video/settings"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{serial}", fmt.Sprintf("%v", serial), -1)
 
 	response, err := s.client.R().
@@ -1048,7 +1048,7 @@ func (s *CameraService) GetDeviceCameraVideoSettings(serial string) (*ResponseCa
 */
 func (s *CameraService) GetDeviceCameraVideoLink(serial string, getDeviceCameraVideoLinkQueryParams *GetDeviceCameraVideoLinkQueryParams) (*ResponseCameraGetDeviceCameraVideoLink, *resty.Response, error) {
 	path := "/api/v1/devices/{serial}/camera/videoLink"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{serial}", fmt.Sprintf("%v", serial), -1)
 
 	queryString, _ := query.Values(getDeviceCameraVideoLinkQueryParams)
@@ -1083,7 +1083,7 @@ func (s *CameraService) GetDeviceCameraVideoLink(serial string, getDeviceCameraV
 */
 func (s *CameraService) GetDeviceCameraWirelessProfiles(serial string) (*ResponseCameraGetDeviceCameraWirelessProfiles, *resty.Response, error) {
 	path := "/api/v1/devices/{serial}/camera/wirelessProfiles"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{serial}", fmt.Sprintf("%v", serial), -1)
 
 	response, err := s.client.R().
@@ -1116,7 +1116,7 @@ func (s *CameraService) GetDeviceCameraWirelessProfiles(serial string) (*Respons
 */
 func (s *CameraService) GetNetworkCameraQualityRetentionProfiles(networkID string) (*ResponseCameraGetNetworkCameraQualityRetentionProfiles, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/camera/qualityRetentionProfiles"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -1150,7 +1150,7 @@ func (s *CameraService) GetNetworkCameraQualityRetentionProfiles(networkID strin
 */
 func (s *CameraService) GetNetworkCameraQualityRetentionProfile(networkID string, qualityRetentionProfileID string) (*ResponseCameraGetNetworkCameraQualityRetentionProfile, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/camera/qualityRetentionProfiles/{qualityRetentionProfileId}"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{qualityRetentionProfileId}", fmt.Sprintf("%v", qualityRetentionProfileID), -1)
 
@@ -1184,7 +1184,7 @@ func (s *CameraService) GetNetworkCameraQualityRetentionProfile(networkID string
 */
 func (s *CameraService) GetNetworkCameraSchedules(networkID string) (*ResponseCameraGetNetworkCameraSchedules, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/camera/schedules"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -1217,7 +1217,7 @@ func (s *CameraService) GetNetworkCameraSchedules(networkID string) (*ResponseCa
 */
 func (s *CameraService) GetNetworkCameraWirelessProfiles(networkID string) (*ResponseCameraGetNetworkCameraWirelessProfiles, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/camera/wirelessProfiles"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -1251,7 +1251,7 @@ func (s *CameraService) GetNetworkCameraWirelessProfiles(networkID string) (*Res
 */
 func (s *CameraService) GetNetworkCameraWirelessProfile(networkID string, wirelessProfileID string) (*ResponseCameraGetNetworkCameraWirelessProfile, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/camera/wirelessProfiles/{wirelessProfileId}"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{wirelessProfileId}", fmt.Sprintf("%v", wirelessProfileID), -1)
 
@@ -1286,7 +1286,7 @@ func (s *CameraService) GetNetworkCameraWirelessProfile(networkID string, wirele
 */
 func (s *CameraService) GetOrganizationCameraBoundariesAreasByDevice(organizationID string, getOrganizationCameraBoundariesAreasByDeviceQueryParams *GetOrganizationCameraBoundariesAreasByDeviceQueryParams) (*ResponseCameraGetOrganizationCameraBoundariesAreasByDevice, *resty.Response, error) {
 	path := "/api/v1/organizations/{organizationId}/camera/boundaries/areas/byDevice"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{organizationId}", fmt.Sprintf("%v", organizationID), -1)
 
 	queryString, _ := query.Values(getOrganizationCameraBoundariesAreasByDeviceQueryParams)
@@ -1322,7 +1322,7 @@ func (s *CameraService) GetOrganizationCameraBoundariesAreasByDevice(organizatio
 */
 func (s *CameraService) GetOrganizationCameraBoundariesLinesByDevice(organizationID string, getOrganizationCameraBoundariesLinesByDeviceQueryParams *GetOrganizationCameraBoundariesLinesByDeviceQueryParams) (*ResponseCameraGetOrganizationCameraBoundariesLinesByDevice, *resty.Response, error) {
 	path := "/api/v1/organizations/{organizationId}/camera/boundaries/lines/byDevice"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{organizationId}", fmt.Sprintf("%v", organizationID), -1)
 
 	queryString, _ := query.Values(getOrganizationCameraBoundariesLinesByDeviceQueryParams)
@@ -1357,7 +1357,7 @@ func (s *CameraService) GetOrganizationCameraBoundariesLinesByDevice(organizatio
 */
 func (s *CameraService) GetOrganizationCameraCustomAnalyticsArtifacts(organizationID string) (*ResponseCameraGetOrganizationCameraCustomAnalyticsArtifacts, *resty.Response, error) {
 	path := "/api/v1/organizations/{organizationId}/camera/customAnalytics/artifacts"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{organizationId}", fmt.Sprintf("%v", organizationID), -1)
 
 	response, err := s.client.R().
@@ -1391,7 +1391,7 @@ func (s *CameraService) GetOrganizationCameraCustomAnalyticsArtifacts(organizati
 */
 func (s *CameraService) GetOrganizationCameraCustomAnalyticsArtifact(organizationID string, artifactID string) (*ResponseCameraGetOrganizationCameraCustomAnalyticsArtifact, *resty.Response, error) {
 	path := "/api/v1/organizations/{organizationId}/camera/customAnalytics/artifacts/{artifactId}"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{organizationId}", fmt.Sprintf("%v", organizationID), -1)
 	path = strings.Replace(path, "{artifactId}", fmt.Sprintf("%v", artifactID), -1)
 
@@ -1426,7 +1426,7 @@ func (s *CameraService) GetOrganizationCameraCustomAnalyticsArtifact(organizatio
 */
 func (s *CameraService) GetOrganizationCameraDetectionsHistoryByBoundaryByInterval(organizationID string, getOrganizationCameraDetectionsHistoryByBoundaryByIntervalQueryParams *GetOrganizationCameraDetectionsHistoryByBoundaryByIntervalQueryParams) (*ResponseCameraGetOrganizationCameraDetectionsHistoryByBoundaryByInterval, *resty.Response, error) {
 	path := "/api/v1/organizations/{organizationId}/camera/detections/history/byBoundary/byInterval"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{organizationId}", fmt.Sprintf("%v", organizationID), -1)
 
 	queryString, _ := query.Values(getOrganizationCameraDetectionsHistoryByBoundaryByIntervalQueryParams)
@@ -1462,7 +1462,7 @@ func (s *CameraService) GetOrganizationCameraDetectionsHistoryByBoundaryByInterv
 */
 func (s *CameraService) GetOrganizationCameraOnboardingStatuses(organizationID string, getOrganizationCameraOnboardingStatusesQueryParams *GetOrganizationCameraOnboardingStatusesQueryParams) (*ResponseCameraGetOrganizationCameraOnboardingStatuses, *resty.Response, error) {
 	path := "/api/v1/organizations/{organizationId}/camera/onboarding/statuses"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{organizationId}", fmt.Sprintf("%v", organizationID), -1)
 
 	queryString, _ := query.Values(getOrganizationCameraOnboardingStatusesQueryParams)
@@ -1497,7 +1497,7 @@ func (s *CameraService) GetOrganizationCameraOnboardingStatuses(organizationID s
 */
 func (s *CameraService) GetOrganizationCameraPermissions(organizationID string) (*ResponseCameraGetOrganizationCameraPermissions, *resty.Response, error) {
 	path := "/api/v1/organizations/{organizationId}/camera/permissions"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{organizationId}", fmt.Sprintf("%v", organizationID), -1)
 
 	response, err := s.client.R().
@@ -1531,7 +1531,7 @@ func (s *CameraService) GetOrganizationCameraPermissions(organizationID string) 
 */
 func (s *CameraService) GetOrganizationCameraPermission(organizationID string, permissionScopeID string) (*ResponseCameraGetOrganizationCameraPermission, *resty.Response, error) {
 	path := "/api/v1/organizations/{organizationId}/camera/permissions/{permissionScopeId}"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{organizationId}", fmt.Sprintf("%v", organizationID), -1)
 	path = strings.Replace(path, "{permissionScopeId}", fmt.Sprintf("%v", permissionScopeID), -1)
 
@@ -1565,7 +1565,7 @@ func (s *CameraService) GetOrganizationCameraPermission(organizationID string, p
 */
 func (s *CameraService) GetOrganizationCameraRoles(organizationID string) (*ResponseCameraGetOrganizationCameraRoles, *resty.Response, error) {
 	path := "/api/v1/organizations/{organizationId}/camera/roles"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{organizationId}", fmt.Sprintf("%v", organizationID), -1)
 
 	response, err := s.client.R().
@@ -1599,7 +1599,7 @@ func (s *CameraService) GetOrganizationCameraRoles(organizationID string) (*Resp
 */
 func (s *CameraService) GetOrganizationCameraRole(organizationID string, roleID string) (*ResponseCameraGetOrganizationCameraRole, *resty.Response, error) {
 	path := "/api/v1/organizations/{organizationId}/camera/roles/{roleId}"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{organizationId}", fmt.Sprintf("%v", organizationID), -1)
 	path = strings.Replace(path, "{roleId}", fmt.Sprintf("%v", roleID), -1)
 
@@ -1634,7 +1634,7 @@ func (s *CameraService) GetOrganizationCameraRole(organizationID string, roleID 
 
 func (s *CameraService) GenerateDeviceCameraSnapshot(serial string, requestCameraGenerateDeviceCameraSnapshot *RequestCameraGenerateDeviceCameraSnapshot) (*resty.Response, error) {
 	path := "/api/v1/devices/{serial}/camera/generateSnapshot"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{serial}", fmt.Sprintf("%v", serial), -1)
 
 	response, err := s.client.R().
@@ -1668,7 +1668,7 @@ func (s *CameraService) GenerateDeviceCameraSnapshot(serial string, requestCamer
 
 func (s *CameraService) CreateNetworkCameraQualityRetentionProfile(networkID string, requestCameraCreateNetworkCameraQualityRetentionProfile *RequestCameraCreateNetworkCameraQualityRetentionProfile) (*resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/camera/qualityRetentionProfiles"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -1702,7 +1702,7 @@ func (s *CameraService) CreateNetworkCameraQualityRetentionProfile(networkID str
 
 func (s *CameraService) CreateNetworkCameraWirelessProfile(networkID string, requestCameraCreateNetworkCameraWirelessProfile *RequestCameraCreateNetworkCameraWirelessProfile) (*resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/camera/wirelessProfiles"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -1736,7 +1736,7 @@ func (s *CameraService) CreateNetworkCameraWirelessProfile(networkID string, req
 
 func (s *CameraService) CreateOrganizationCameraCustomAnalyticsArtifact(organizationID string, requestCameraCreateOrganizationCameraCustomAnalyticsArtifact *RequestCameraCreateOrganizationCameraCustomAnalyticsArtifact) (*ResponseCameraCreateOrganizationCameraCustomAnalyticsArtifact, *resty.Response, error) {
 	path := "/api/v1/organizations/{organizationId}/camera/customAnalytics/artifacts"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{organizationId}", fmt.Sprintf("%v", organizationID), -1)
 
 	response, err := s.client.R().
@@ -1771,7 +1771,7 @@ func (s *CameraService) CreateOrganizationCameraCustomAnalyticsArtifact(organiza
 
 func (s *CameraService) CreateOrganizationCameraRole(organizationID string, requestCameraCreateOrganizationCameraRole *RequestCameraCreateOrganizationCameraRole) (*resty.Response, error) {
 	path := "/api/v1/organizations/{organizationId}/camera/roles"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{organizationId}", fmt.Sprintf("%v", organizationID), -1)
 
 	response, err := s.client.R().
@@ -1802,7 +1802,7 @@ func (s *CameraService) CreateOrganizationCameraRole(organizationID string, requ
 */
 func (s *CameraService) UpdateDeviceCameraCustomAnalytics(serial string, requestCameraUpdateDeviceCameraCustomAnalytics *RequestCameraUpdateDeviceCameraCustomAnalytics) (*ResponseCameraUpdateDeviceCameraCustomAnalytics, *resty.Response, error) {
 	path := "/api/v1/devices/{serial}/camera/customAnalytics"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{serial}", fmt.Sprintf("%v", serial), -1)
 
 	response, err := s.client.R().
@@ -1834,7 +1834,7 @@ func (s *CameraService) UpdateDeviceCameraCustomAnalytics(serial string, request
 */
 func (s *CameraService) UpdateDeviceCameraQualityAndRetention(serial string, requestCameraUpdateDeviceCameraQualityAndRetention *RequestCameraUpdateDeviceCameraQualityAndRetention) (*resty.Response, error) {
 	path := "/api/v1/devices/{serial}/camera/qualityAndRetention"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{serial}", fmt.Sprintf("%v", serial), -1)
 
 	response, err := s.client.R().
@@ -1864,7 +1864,7 @@ func (s *CameraService) UpdateDeviceCameraQualityAndRetention(serial string, req
 */
 func (s *CameraService) UpdateDeviceCameraSense(serial string, requestCameraUpdateDeviceCameraSense *RequestCameraUpdateDeviceCameraSense) (*resty.Response, error) {
 	path := "/api/v1/devices/{serial}/camera/sense"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{serial}", fmt.Sprintf("%v", serial), -1)
 
 	response, err := s.client.R().
@@ -1894,7 +1894,7 @@ func (s *CameraService) UpdateDeviceCameraSense(serial string, requestCameraUpda
 */
 func (s *CameraService) UpdateDeviceCameraVideoSettings(serial string, requestCameraUpdateDeviceCameraVideoSettings *RequestCameraUpdateDeviceCameraVideoSettings) (*ResponseCameraUpdateDeviceCameraVideoSettings, *resty.Response, error) {
 	path := "/api/v1/devices/{serial}/camera/video/settings"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{serial}", fmt.Sprintf("%v", serial), -1)
 
 	response, err := s.client.R().
@@ -1926,7 +1926,7 @@ func (s *CameraService) UpdateDeviceCameraVideoSettings(serial string, requestCa
 */
 func (s *CameraService) UpdateDeviceCameraWirelessProfiles(serial string, requestCameraUpdateDeviceCameraWirelessProfiles *RequestCameraUpdateDeviceCameraWirelessProfiles) (*resty.Response, error) {
 	path := "/api/v1/devices/{serial}/camera/wirelessProfiles"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{serial}", fmt.Sprintf("%v", serial), -1)
 
 	response, err := s.client.R().
@@ -1957,7 +1957,7 @@ func (s *CameraService) UpdateDeviceCameraWirelessProfiles(serial string, reques
 */
 func (s *CameraService) UpdateNetworkCameraQualityRetentionProfile(networkID string, qualityRetentionProfileID string, requestCameraUpdateNetworkCameraQualityRetentionProfile *RequestCameraUpdateNetworkCameraQualityRetentionProfile) (*resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/camera/qualityRetentionProfiles/{qualityRetentionProfileId}"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{qualityRetentionProfileId}", fmt.Sprintf("%v", qualityRetentionProfileID), -1)
 
@@ -1989,7 +1989,7 @@ func (s *CameraService) UpdateNetworkCameraQualityRetentionProfile(networkID str
 */
 func (s *CameraService) UpdateNetworkCameraWirelessProfile(networkID string, wirelessProfileID string, requestCameraUpdateNetworkCameraWirelessProfile *RequestCameraUpdateNetworkCameraWirelessProfile) (*resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/camera/wirelessProfiles/{wirelessProfileId}"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{wirelessProfileId}", fmt.Sprintf("%v", wirelessProfileID), -1)
 
@@ -2020,7 +2020,7 @@ func (s *CameraService) UpdateNetworkCameraWirelessProfile(networkID string, wir
 */
 func (s *CameraService) UpdateOrganizationCameraOnboardingStatuses(organizationID string, requestCameraUpdateOrganizationCameraOnboardingStatuses *RequestCameraUpdateOrganizationCameraOnboardingStatuses) (*resty.Response, error) {
 	path := "/api/v1/organizations/{organizationId}/camera/onboarding/statuses"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{organizationId}", fmt.Sprintf("%v", organizationID), -1)
 
 	response, err := s.client.R().
@@ -2051,7 +2051,7 @@ func (s *CameraService) UpdateOrganizationCameraOnboardingStatuses(organizationI
 */
 func (s *CameraService) UpdateOrganizationCameraRole(organizationID string, roleID string, requestCameraUpdateOrganizationCameraRole *RequestCameraUpdateOrganizationCameraRole) (*resty.Response, error) {
 	path := "/api/v1/organizations/{organizationId}/camera/roles/{roleId}"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{organizationId}", fmt.Sprintf("%v", organizationID), -1)
 	path = strings.Replace(path, "{roleId}", fmt.Sprintf("%v", roleID), -1)
 
@@ -2086,7 +2086,7 @@ func (s *CameraService) UpdateOrganizationCameraRole(organizationID string, role
 func (s *CameraService) DeleteNetworkCameraQualityRetentionProfile(networkID string, qualityRetentionProfileID string) (*resty.Response, error) {
 	//networkID string,qualityRetentionProfileID string
 	path := "/api/v1/networks/{networkId}/camera/qualityRetentionProfiles/{qualityRetentionProfileId}"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{qualityRetentionProfileId}", fmt.Sprintf("%v", qualityRetentionProfileID), -1)
 
@@ -2120,7 +2120,7 @@ func (s *CameraService) DeleteNetworkCameraQualityRetentionProfile(networkID str
 func (s *CameraService) DeleteNetworkCameraWirelessProfile(networkID string, wirelessProfileID string) (*resty.Response, error) {
 	//networkID string,wirelessProfileID string
 	path := "/api/v1/networks/{networkId}/camera/wirelessProfiles/{wirelessProfileId}"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{wirelessProfileId}", fmt.Sprintf("%v", wirelessProfileID), -1)
 
@@ -2154,7 +2154,7 @@ func (s *CameraService) DeleteNetworkCameraWirelessProfile(networkID string, wir
 func (s *CameraService) DeleteOrganizationCameraCustomAnalyticsArtifact(organizationID string, artifactID string) (*resty.Response, error) {
 	//organizationID string,artifactID string
 	path := "/api/v1/organizations/{organizationId}/camera/customAnalytics/artifacts/{artifactId}"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{organizationId}", fmt.Sprintf("%v", organizationID), -1)
 	path = strings.Replace(path, "{artifactId}", fmt.Sprintf("%v", artifactID), -1)
 
@@ -2188,7 +2188,7 @@ func (s *CameraService) DeleteOrganizationCameraCustomAnalyticsArtifact(organiza
 func (s *CameraService) DeleteOrganizationCameraRole(organizationID string, roleID string) (*resty.Response, error) {
 	//organizationID string,roleID string
 	path := "/api/v1/organizations/{organizationId}/camera/roles/{roleId}"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{organizationId}", fmt.Sprintf("%v", organizationID), -1)
 	path = strings.Replace(path, "{roleId}", fmt.Sprintf("%v", roleID), -1)
 

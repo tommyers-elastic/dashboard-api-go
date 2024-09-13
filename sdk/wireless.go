@@ -3447,7 +3447,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-device-wir
 */
 func (s *WirelessService) GetDeviceWirelessBluetoothSettings(serial string) (*ResponseWirelessGetDeviceWirelessBluetoothSettings, *resty.Response, error) {
 	path := "/api/v1/devices/{serial}/wireless/bluetooth/settings"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{serial}", fmt.Sprintf("%v", serial), -1)
 
 	response, err := s.client.R().
@@ -3481,7 +3481,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-device-wir
 */
 func (s *WirelessService) GetDeviceWirelessConnectionStats(serial string, getDeviceWirelessConnectionStatsQueryParams *GetDeviceWirelessConnectionStatsQueryParams) (*ResponseWirelessGetDeviceWirelessConnectionStats, *resty.Response, error) {
 	path := "/api/v1/devices/{serial}/wireless/connectionStats"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{serial}", fmt.Sprintf("%v", serial), -1)
 
 	queryString, _ := query.Values(getDeviceWirelessConnectionStatsQueryParams)
@@ -3517,7 +3517,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-device-wir
 */
 func (s *WirelessService) GetDeviceWirelessLatencyStats(serial string, getDeviceWirelessLatencyStatsQueryParams *GetDeviceWirelessLatencyStatsQueryParams) (*ResponseWirelessGetDeviceWirelessLatencyStats, *resty.Response, error) {
 	path := "/api/v1/devices/{serial}/wireless/latencyStats"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{serial}", fmt.Sprintf("%v", serial), -1)
 
 	queryString, _ := query.Values(getDeviceWirelessLatencyStatsQueryParams)
@@ -3552,7 +3552,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-device-wir
 */
 func (s *WirelessService) GetDeviceWirelessRadioSettings(serial string) (*ResponseWirelessGetDeviceWirelessRadioSettings, *resty.Response, error) {
 	path := "/api/v1/devices/{serial}/wireless/radio/settings"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{serial}", fmt.Sprintf("%v", serial), -1)
 
 	response, err := s.client.R().
@@ -3585,7 +3585,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-device-wir
 */
 func (s *WirelessService) GetDeviceWirelessStatus(serial string) (*ResponseWirelessGetDeviceWirelessStatus, *resty.Response, error) {
 	path := "/api/v1/devices/{serial}/wireless/status"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{serial}", fmt.Sprintf("%v", serial), -1)
 
 	response, err := s.client.R().
@@ -3619,7 +3619,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-network-wi
 */
 func (s *WirelessService) GetNetworkWirelessAirMarshal(networkID string, getNetworkWirelessAirMarshalQueryParams *GetNetworkWirelessAirMarshalQueryParams) (*ResponseWirelessGetNetworkWirelessAirMarshal, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/airMarshal"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	queryString, _ := query.Values(getNetworkWirelessAirMarshalQueryParams)
@@ -3654,7 +3654,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-network-wi
 */
 func (s *WirelessService) GetNetworkWirelessAlternateManagementInterface(networkID string) (*ResponseWirelessGetNetworkWirelessAlternateManagementInterface, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/alternateManagementInterface"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -3687,7 +3687,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-network-wi
 */
 func (s *WirelessService) GetNetworkWirelessBilling(networkID string) (*ResponseWirelessGetNetworkWirelessBilling, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/billing"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -3722,7 +3722,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-network-wi
 */
 func (s *WirelessService) GetNetworkWirelessBluetoothSettings(networkID string) (*ResponseWirelessGetNetworkWirelessBluetoothSettings, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/bluetooth/settings"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -3756,7 +3756,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-network-wi
 */
 func (s *WirelessService) GetNetworkWirelessChannelUtilizationHistory(networkID string, getNetworkWirelessChannelUtilizationHistoryQueryParams *GetNetworkWirelessChannelUtilizationHistoryQueryParams) (*ResponseWirelessGetNetworkWirelessChannelUtilizationHistory, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/channelUtilizationHistory"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	queryString, _ := query.Values(getNetworkWirelessChannelUtilizationHistoryQueryParams)
@@ -3792,7 +3792,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-network-wi
 */
 func (s *WirelessService) GetNetworkWirelessClientCountHistory(networkID string, getNetworkWirelessClientCountHistoryQueryParams *GetNetworkWirelessClientCountHistoryQueryParams) (*ResponseWirelessGetNetworkWirelessClientCountHistory, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/clientCountHistory"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	queryString, _ := query.Values(getNetworkWirelessClientCountHistoryQueryParams)
@@ -3828,7 +3828,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-network-wi
 */
 func (s *WirelessService) GetNetworkWirelessClientsConnectionStats(networkID string, getNetworkWirelessClientsConnectionStatsQueryParams *GetNetworkWirelessClientsConnectionStatsQueryParams) (*ResponseWirelessGetNetworkWirelessClientsConnectionStats, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/clients/connectionStats"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	queryString, _ := query.Values(getNetworkWirelessClientsConnectionStatsQueryParams)
@@ -3864,7 +3864,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-network-wi
 */
 func (s *WirelessService) GetNetworkWirelessClientsLatencyStats(networkID string, getNetworkWirelessClientsLatencyStatsQueryParams *GetNetworkWirelessClientsLatencyStatsQueryParams) (*ResponseWirelessGetNetworkWirelessClientsLatencyStats, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/clients/latencyStats"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	queryString, _ := query.Values(getNetworkWirelessClientsLatencyStatsQueryParams)
@@ -3901,7 +3901,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-network-wi
 */
 func (s *WirelessService) GetNetworkWirelessClientConnectionStats(networkID string, clientID string, getNetworkWirelessClientConnectionStatsQueryParams *GetNetworkWirelessClientConnectionStatsQueryParams) (*ResponseWirelessGetNetworkWirelessClientConnectionStats, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/clients/{clientId}/connectionStats"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{clientId}", fmt.Sprintf("%v", clientID), -1)
 
@@ -3939,7 +3939,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-network-wi
 */
 func (s *WirelessService) GetNetworkWirelessClientConnectivityEvents(networkID string, clientID string, getNetworkWirelessClientConnectivityEventsQueryParams *GetNetworkWirelessClientConnectivityEventsQueryParams) (*ResponseWirelessGetNetworkWirelessClientConnectivityEvents, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/clients/{clientId}/connectivityEvents"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{clientId}", fmt.Sprintf("%v", clientID), -1)
 
@@ -3977,7 +3977,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-network-wi
 */
 func (s *WirelessService) GetNetworkWirelessClientLatencyHistory(networkID string, clientID string, getNetworkWirelessClientLatencyHistoryQueryParams *GetNetworkWirelessClientLatencyHistoryQueryParams) (*ResponseWirelessGetNetworkWirelessClientLatencyHistory, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/clients/{clientId}/latencyHistory"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{clientId}", fmt.Sprintf("%v", clientID), -1)
 
@@ -4015,7 +4015,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-network-wi
 */
 func (s *WirelessService) GetNetworkWirelessClientLatencyStats(networkID string, clientID string, getNetworkWirelessClientLatencyStatsQueryParams *GetNetworkWirelessClientLatencyStatsQueryParams) (*ResponseWirelessGetNetworkWirelessClientLatencyStats, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/clients/{clientId}/latencyStats"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{clientId}", fmt.Sprintf("%v", clientID), -1)
 
@@ -4052,7 +4052,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-network-wi
 */
 func (s *WirelessService) GetNetworkWirelessConnectionStats(networkID string, getNetworkWirelessConnectionStatsQueryParams *GetNetworkWirelessConnectionStatsQueryParams) (*ResponseWirelessGetNetworkWirelessConnectionStats, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/connectionStats"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	queryString, _ := query.Values(getNetworkWirelessConnectionStatsQueryParams)
@@ -4088,7 +4088,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-network-wi
 */
 func (s *WirelessService) GetNetworkWirelessDataRateHistory(networkID string, getNetworkWirelessDataRateHistoryQueryParams *GetNetworkWirelessDataRateHistoryQueryParams) (*ResponseWirelessGetNetworkWirelessDataRateHistory, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/dataRateHistory"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	queryString, _ := query.Values(getNetworkWirelessDataRateHistoryQueryParams)
@@ -4124,7 +4124,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-network-wi
 */
 func (s *WirelessService) GetNetworkWirelessDevicesConnectionStats(networkID string, getNetworkWirelessDevicesConnectionStatsQueryParams *GetNetworkWirelessDevicesConnectionStatsQueryParams) (*ResponseWirelessGetNetworkWirelessDevicesConnectionStats, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/devices/connectionStats"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	queryString, _ := query.Values(getNetworkWirelessDevicesConnectionStatsQueryParams)
@@ -4160,7 +4160,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-network-wi
 */
 func (s *WirelessService) GetNetworkWirelessDevicesLatencyStats(networkID string, getNetworkWirelessDevicesLatencyStatsQueryParams *GetNetworkWirelessDevicesLatencyStatsQueryParams) (*ResponseWirelessGetNetworkWirelessDevicesLatencyStats, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/devices/latencyStats"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	queryString, _ := query.Values(getNetworkWirelessDevicesLatencyStatsQueryParams)
@@ -4195,7 +4195,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-network-wi
 */
 func (s *WirelessService) GetNetworkWirelessEthernetPortsProfiles(networkID string) (*ResponseWirelessGetNetworkWirelessEthernetPortsProfiles, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/ethernet/ports/profiles"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -4229,7 +4229,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-network-wi
 */
 func (s *WirelessService) GetNetworkWirelessEthernetPortsProfile(networkID string, profileID string) (*ResponseWirelessGetNetworkWirelessEthernetPortsProfile, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/ethernet/ports/profiles/{profileId}"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{profileId}", fmt.Sprintf("%v", profileID), -1)
 
@@ -4264,7 +4264,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-network-wi
 */
 func (s *WirelessService) GetNetworkWirelessFailedConnections(networkID string, getNetworkWirelessFailedConnectionsQueryParams *GetNetworkWirelessFailedConnectionsQueryParams) (*ResponseWirelessGetNetworkWirelessFailedConnections, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/failedConnections"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	queryString, _ := query.Values(getNetworkWirelessFailedConnectionsQueryParams)
@@ -4300,7 +4300,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-network-wi
 */
 func (s *WirelessService) GetNetworkWirelessLatencyHistory(networkID string, getNetworkWirelessLatencyHistoryQueryParams *GetNetworkWirelessLatencyHistoryQueryParams) (*ResponseWirelessGetNetworkWirelessLatencyHistory, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/latencyHistory"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	queryString, _ := query.Values(getNetworkWirelessLatencyHistoryQueryParams)
@@ -4336,7 +4336,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-network-wi
 */
 func (s *WirelessService) GetNetworkWirelessLatencyStats(networkID string, getNetworkWirelessLatencyStatsQueryParams *GetNetworkWirelessLatencyStatsQueryParams) (*ResponseWirelessGetNetworkWirelessLatencyStats, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/latencyStats"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	queryString, _ := query.Values(getNetworkWirelessLatencyStatsQueryParams)
@@ -4372,7 +4372,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-network-wi
 */
 func (s *WirelessService) GetNetworkWirelessMeshStatuses(networkID string, getNetworkWirelessMeshStatusesQueryParams *GetNetworkWirelessMeshStatusesQueryParams) (*ResponseWirelessGetNetworkWirelessMeshStatuses, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/meshStatuses"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	queryString, _ := query.Values(getNetworkWirelessMeshStatusesQueryParams)
@@ -4408,7 +4408,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-network-wi
 */
 func (s *WirelessService) GetNetworkWirelessRfProfiles(networkID string, getNetworkWirelessRfProfilesQueryParams *GetNetworkWirelessRfProfilesQueryParams) (*ResponseWirelessGetNetworkWirelessRfProfiles, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/rfProfiles"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	queryString, _ := query.Values(getNetworkWirelessRfProfilesQueryParams)
@@ -4444,7 +4444,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-network-wi
 */
 func (s *WirelessService) GetNetworkWirelessRfProfile(networkID string, rfProfileID string) (*ResponseWirelessGetNetworkWirelessRfProfile, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/rfProfiles/{rfProfileId}"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{rfProfileId}", fmt.Sprintf("%v", rfProfileID), -1)
 
@@ -4478,7 +4478,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-network-wi
 */
 func (s *WirelessService) GetNetworkWirelessSettings(networkID string) (*ResponseWirelessGetNetworkWirelessSettings, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/settings"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -4512,7 +4512,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-network-wi
 */
 func (s *WirelessService) GetNetworkWirelessSignalQualityHistory(networkID string, getNetworkWirelessSignalQualityHistoryQueryParams *GetNetworkWirelessSignalQualityHistoryQueryParams) (*ResponseWirelessGetNetworkWirelessSignalQualityHistory, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/signalQualityHistory"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	queryString, _ := query.Values(getNetworkWirelessSignalQualityHistoryQueryParams)
@@ -4547,7 +4547,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-network-wi
 */
 func (s *WirelessService) GetNetworkWirelessSSIDs(networkID string) (*ResponseWirelessGetNetworkWirelessSSIDs, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/ssids"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -4581,7 +4581,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-network-wi
 */
 func (s *WirelessService) GetNetworkWirelessSSID(networkID string, number string) (*ResponseWirelessGetNetworkWirelessSSID, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/ssids/{number}"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{number}", fmt.Sprintf("%v", number), -1)
 
@@ -4616,7 +4616,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-network-wi
 */
 func (s *WirelessService) GetNetworkWirelessSSIDBonjourForwarding(networkID string, number string) (*ResponseWirelessGetNetworkWirelessSSIDBonjourForwarding, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/ssids/{number}/bonjourForwarding"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{number}", fmt.Sprintf("%v", number), -1)
 
@@ -4651,7 +4651,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-network-wi
 */
 func (s *WirelessService) GetNetworkWirelessSSIDDeviceTypeGroupPolicies(networkID string, number string) (*ResponseWirelessGetNetworkWirelessSSIDDeviceTypeGroupPolicies, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/ssids/{number}/deviceTypeGroupPolicies"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{number}", fmt.Sprintf("%v", number), -1)
 
@@ -4686,7 +4686,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-network-wi
 */
 func (s *WirelessService) GetNetworkWirelessSSIDEapOverride(networkID string, number string) (*ResponseWirelessGetNetworkWirelessSSIDEapOverride, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/ssids/{number}/eapOverride"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{number}", fmt.Sprintf("%v", number), -1)
 
@@ -4721,7 +4721,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-network-wi
 */
 func (s *WirelessService) GetNetworkWirelessSSIDFirewallL3FirewallRules(networkID string, number string) (*ResponseWirelessGetNetworkWirelessSSIDFirewallL3FirewallRules, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/ssids/{number}/firewall/l3FirewallRules"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{number}", fmt.Sprintf("%v", number), -1)
 
@@ -4756,7 +4756,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-network-wi
 */
 func (s *WirelessService) GetNetworkWirelessSSIDFirewallL7FirewallRules(networkID string, number string) (*ResponseWirelessGetNetworkWirelessSSIDFirewallL7FirewallRules, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/ssids/{number}/firewall/l7FirewallRules"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{number}", fmt.Sprintf("%v", number), -1)
 
@@ -4791,7 +4791,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-network-wi
 */
 func (s *WirelessService) GetNetworkWirelessSSIDHotspot20(networkID string, number string) (*ResponseWirelessGetNetworkWirelessSSIDHotspot20, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/ssids/{number}/hotspot20"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{number}", fmt.Sprintf("%v", number), -1)
 
@@ -4826,7 +4826,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-network-wi
 */
 func (s *WirelessService) GetNetworkWirelessSSIDIDentityPsks(networkID string, number string) (*ResponseWirelessGetNetworkWirelessSSIDIDentityPsks, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/ssids/{number}/identityPsks"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{number}", fmt.Sprintf("%v", number), -1)
 
@@ -4862,7 +4862,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-network-wi
 */
 func (s *WirelessService) GetNetworkWirelessSSIDIDentityPsk(networkID string, number string, identityPskID string) (*ResponseWirelessGetNetworkWirelessSSIDIDentityPsk, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/ssids/{number}/identityPsks/{identityPskId}"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{number}", fmt.Sprintf("%v", number), -1)
 	path = strings.Replace(path, "{identityPskId}", fmt.Sprintf("%v", identityPskID), -1)
@@ -4898,7 +4898,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-network-wi
 */
 func (s *WirelessService) GetNetworkWirelessSSIDSchedules(networkID string, number string) (*ResponseWirelessGetNetworkWirelessSSIDSchedules, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/ssids/{number}/schedules"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{number}", fmt.Sprintf("%v", number), -1)
 
@@ -4933,7 +4933,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-network-wi
 */
 func (s *WirelessService) GetNetworkWirelessSSIDSplashSettings(networkID string, number string) (*ResponseWirelessGetNetworkWirelessSSIDSplashSettings, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/ssids/{number}/splash/settings"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{number}", fmt.Sprintf("%v", number), -1)
 
@@ -4968,7 +4968,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-network-wi
 */
 func (s *WirelessService) GetNetworkWirelessSSIDTrafficShapingRules(networkID string, number string) (*ResponseWirelessGetNetworkWirelessSSIDTrafficShapingRules, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/ssids/{number}/trafficShaping/rules"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{number}", fmt.Sprintf("%v", number), -1)
 
@@ -5003,7 +5003,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-network-wi
 */
 func (s *WirelessService) GetNetworkWirelessSSIDVpn(networkID string, number string) (*ResponseWirelessGetNetworkWirelessSSIDVpn, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/ssids/{number}/vpn"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{number}", fmt.Sprintf("%v", number), -1)
 
@@ -5038,7 +5038,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-network-wi
 */
 func (s *WirelessService) GetNetworkWirelessUsageHistory(networkID string, getNetworkWirelessUsageHistoryQueryParams *GetNetworkWirelessUsageHistoryQueryParams) (*ResponseWirelessGetNetworkWirelessUsageHistory, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/usageHistory"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	queryString, _ := query.Values(getNetworkWirelessUsageHistoryQueryParams)
@@ -5074,7 +5074,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-organizati
 */
 func (s *WirelessService) GetOrganizationWirelessDevicesChannelUtilizationByDevice(organizationID string, getOrganizationWirelessDevicesChannelUtilizationByDeviceQueryParams *GetOrganizationWirelessDevicesChannelUtilizationByDeviceQueryParams) (*ResponseWirelessGetOrganizationWirelessDevicesChannelUtilizationByDevice, *resty.Response, error) {
 	path := "/api/v1/organizations/{organizationId}/wireless/devices/channelUtilization/byDevice"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{organizationId}", fmt.Sprintf("%v", organizationID), -1)
 
 	queryString, _ := query.Values(getOrganizationWirelessDevicesChannelUtilizationByDeviceQueryParams)
@@ -5110,7 +5110,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-organizati
 */
 func (s *WirelessService) GetOrganizationWirelessDevicesChannelUtilizationByNetwork(organizationID string, getOrganizationWirelessDevicesChannelUtilizationByNetworkQueryParams *GetOrganizationWirelessDevicesChannelUtilizationByNetworkQueryParams) (*ResponseWirelessGetOrganizationWirelessDevicesChannelUtilizationByNetwork, *resty.Response, error) {
 	path := "/api/v1/organizations/{organizationId}/wireless/devices/channelUtilization/byNetwork"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{organizationId}", fmt.Sprintf("%v", organizationID), -1)
 
 	queryString, _ := query.Values(getOrganizationWirelessDevicesChannelUtilizationByNetworkQueryParams)
@@ -5146,7 +5146,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-organizati
 */
 func (s *WirelessService) GetOrganizationWirelessDevicesChannelUtilizationHistoryByDeviceByInterval(organizationID string, getOrganizationWirelessDevicesChannelUtilizationHistoryByDeviceByIntervalQueryParams *GetOrganizationWirelessDevicesChannelUtilizationHistoryByDeviceByIntervalQueryParams) (*ResponseWirelessGetOrganizationWirelessDevicesChannelUtilizationHistoryByDeviceByInterval, *resty.Response, error) {
 	path := "/api/v1/organizations/{organizationId}/wireless/devices/channelUtilization/history/byDevice/byInterval"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{organizationId}", fmt.Sprintf("%v", organizationID), -1)
 
 	queryString, _ := query.Values(getOrganizationWirelessDevicesChannelUtilizationHistoryByDeviceByIntervalQueryParams)
@@ -5182,7 +5182,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-organizati
 */
 func (s *WirelessService) GetOrganizationWirelessDevicesChannelUtilizationHistoryByNetworkByInterval(organizationID string, getOrganizationWirelessDevicesChannelUtilizationHistoryByNetworkByIntervalQueryParams *GetOrganizationWirelessDevicesChannelUtilizationHistoryByNetworkByIntervalQueryParams) (*ResponseWirelessGetOrganizationWirelessDevicesChannelUtilizationHistoryByNetworkByInterval, *resty.Response, error) {
 	path := "/api/v1/organizations/{organizationId}/wireless/devices/channelUtilization/history/byNetwork/byInterval"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{organizationId}", fmt.Sprintf("%v", organizationID), -1)
 
 	queryString, _ := query.Values(getOrganizationWirelessDevicesChannelUtilizationHistoryByNetworkByIntervalQueryParams)
@@ -5218,7 +5218,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-organizati
 */
 func (s *WirelessService) GetOrganizationWirelessDevicesEthernetStatuses(organizationID string, getOrganizationWirelessDevicesEthernetStatusesQueryParams *GetOrganizationWirelessDevicesEthernetStatusesQueryParams) (*ResponseWirelessGetOrganizationWirelessDevicesEthernetStatuses, *resty.Response, error) {
 	path := "/api/v1/organizations/{organizationId}/wireless/devices/ethernet/statuses"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{organizationId}", fmt.Sprintf("%v", organizationID), -1)
 
 	queryString, _ := query.Values(getOrganizationWirelessDevicesEthernetStatusesQueryParams)
@@ -5254,7 +5254,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-organizati
 */
 func (s *WirelessService) GetOrganizationWirelessDevicesPacketLossByClient(organizationID string, getOrganizationWirelessDevicesPacketLossByClientQueryParams *GetOrganizationWirelessDevicesPacketLossByClientQueryParams) (*ResponseWirelessGetOrganizationWirelessDevicesPacketLossByClient, *resty.Response, error) {
 	path := "/api/v1/organizations/{organizationId}/wireless/devices/packetLoss/byClient"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{organizationId}", fmt.Sprintf("%v", organizationID), -1)
 
 	queryString, _ := query.Values(getOrganizationWirelessDevicesPacketLossByClientQueryParams)
@@ -5290,7 +5290,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-organizati
 */
 func (s *WirelessService) GetOrganizationWirelessDevicesPacketLossByDevice(organizationID string, getOrganizationWirelessDevicesPacketLossByDeviceQueryParams *GetOrganizationWirelessDevicesPacketLossByDeviceQueryParams) (*ResponseWirelessGetOrganizationWirelessDevicesPacketLossByDevice, *resty.Response, error) {
 	path := "/api/v1/organizations/{organizationId}/wireless/devices/packetLoss/byDevice"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{organizationId}", fmt.Sprintf("%v", organizationID), -1)
 
 	queryString, _ := query.Values(getOrganizationWirelessDevicesPacketLossByDeviceQueryParams)
@@ -5326,7 +5326,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!get-organizati
 */
 func (s *WirelessService) GetOrganizationWirelessDevicesPacketLossByNetwork(organizationID string, getOrganizationWirelessDevicesPacketLossByNetworkQueryParams *GetOrganizationWirelessDevicesPacketLossByNetworkQueryParams) (*ResponseWirelessGetOrganizationWirelessDevicesPacketLossByNetwork, *resty.Response, error) {
 	path := "/api/v1/organizations/{organizationId}/wireless/devices/packetLoss/byNetwork"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{organizationId}", fmt.Sprintf("%v", organizationID), -1)
 
 	queryString, _ := query.Values(getOrganizationWirelessDevicesPacketLossByNetworkQueryParams)
@@ -5362,7 +5362,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-network
 
 func (s *WirelessService) CreateNetworkWirelessEthernetPortsProfile(networkID string, requestWirelessCreateNetworkWirelessEthernetPortsProfile *RequestWirelessCreateNetworkWirelessEthernetPortsProfile) (*ResponseWirelessCreateNetworkWirelessEthernetPortsProfile, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/ethernet/ports/profiles"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -5397,7 +5397,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!assign-network
 
 func (s *WirelessService) AssignNetworkWirelessEthernetPortsProfiles(networkID string, requestWirelessAssignNetworkWirelessEthernetPortsProfiles *RequestWirelessAssignNetworkWirelessEthernetPortsProfiles) (*ResponseWirelessAssignNetworkWirelessEthernetPortsProfiles, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/ethernet/ports/profiles/assign"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -5432,7 +5432,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!set-network-wi
 
 func (s *WirelessService) SetNetworkWirelessEthernetPortsProfilesDefault(networkID string, requestWirelessSetNetworkWirelessEthernetPortsProfilesDefault *RequestWirelessSetNetworkWirelessEthernetPortsProfilesDefault) (*ResponseWirelessSetNetworkWirelessEthernetPortsProfilesDefault, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/ethernet/ports/profiles/setDefault"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -5467,7 +5467,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-network
 
 func (s *WirelessService) CreateNetworkWirelessRfProfile(networkID string, requestWirelessCreateNetworkWirelessRfProfile *RequestWirelessCreateNetworkWirelessRfProfile) (*ResponseWirelessCreateNetworkWirelessRfProfile, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/rfProfiles"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -5503,7 +5503,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!create-network
 
 func (s *WirelessService) CreateNetworkWirelessSSIDIDentityPsk(networkID string, number string, requestWirelessCreateNetworkWirelessSsidIdentityPsk *RequestWirelessCreateNetworkWirelessSSIDIDentityPsk) (*ResponseWirelessCreateNetworkWirelessSSIDIDentityPsk, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/ssids/{number}/identityPsks"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{number}", fmt.Sprintf("%v", number), -1)
 
@@ -5536,7 +5536,7 @@ func (s *WirelessService) CreateNetworkWirelessSSIDIDentityPsk(networkID string,
 */
 func (s *WirelessService) UpdateDeviceWirelessAlternateManagementInterfaceIPv6(serial string, requestWirelessUpdateDeviceWirelessAlternateManagementInterfaceIpv6 *RequestWirelessUpdateDeviceWirelessAlternateManagementInterfaceIPv6) (*ResponseWirelessUpdateDeviceWirelessAlternateManagementInterfaceIPv6, *resty.Response, error) {
 	path := "/api/v1/devices/{serial}/wireless/alternateManagementInterface/ipv6"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{serial}", fmt.Sprintf("%v", serial), -1)
 
 	response, err := s.client.R().
@@ -5568,7 +5568,7 @@ func (s *WirelessService) UpdateDeviceWirelessAlternateManagementInterfaceIPv6(s
 */
 func (s *WirelessService) UpdateDeviceWirelessBluetoothSettings(serial string, requestWirelessUpdateDeviceWirelessBluetoothSettings *RequestWirelessUpdateDeviceWirelessBluetoothSettings) (*ResponseWirelessUpdateDeviceWirelessBluetoothSettings, *resty.Response, error) {
 	path := "/api/v1/devices/{serial}/wireless/bluetooth/settings"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{serial}", fmt.Sprintf("%v", serial), -1)
 
 	response, err := s.client.R().
@@ -5600,7 +5600,7 @@ func (s *WirelessService) UpdateDeviceWirelessBluetoothSettings(serial string, r
 */
 func (s *WirelessService) UpdateDeviceWirelessRadioSettings(serial string, requestWirelessUpdateDeviceWirelessRadioSettings *RequestWirelessUpdateDeviceWirelessRadioSettings) (*resty.Response, error) {
 	path := "/api/v1/devices/{serial}/wireless/radio/settings"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{serial}", fmt.Sprintf("%v", serial), -1)
 
 	response, err := s.client.R().
@@ -5630,7 +5630,7 @@ func (s *WirelessService) UpdateDeviceWirelessRadioSettings(serial string, reque
 */
 func (s *WirelessService) UpdateNetworkWirelessAlternateManagementInterface(networkID string, requestWirelessUpdateNetworkWirelessAlternateManagementInterface *RequestWirelessUpdateNetworkWirelessAlternateManagementInterface) (*resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/alternateManagementInterface"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -5660,7 +5660,7 @@ func (s *WirelessService) UpdateNetworkWirelessAlternateManagementInterface(netw
 */
 func (s *WirelessService) UpdateNetworkWirelessBilling(networkID string, requestWirelessUpdateNetworkWirelessBilling *RequestWirelessUpdateNetworkWirelessBilling) (*ResponseWirelessUpdateNetworkWirelessBilling, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/billing"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -5694,7 +5694,7 @@ Bluetooth settings
 */
 func (s *WirelessService) UpdateNetworkWirelessBluetoothSettings(networkID string, requestWirelessUpdateNetworkWirelessBluetoothSettings *RequestWirelessUpdateNetworkWirelessBluetoothSettings) (*ResponseWirelessUpdateNetworkWirelessBluetoothSettings, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/bluetooth/settings"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -5727,7 +5727,7 @@ func (s *WirelessService) UpdateNetworkWirelessBluetoothSettings(networkID strin
 */
 func (s *WirelessService) UpdateNetworkWirelessEthernetPortsProfile(networkID string, profileID string, requestWirelessUpdateNetworkWirelessEthernetPortsProfile *RequestWirelessUpdateNetworkWirelessEthernetPortsProfile) (*ResponseWirelessUpdateNetworkWirelessEthernetPortsProfile, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/ethernet/ports/profiles/{profileId}"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{profileId}", fmt.Sprintf("%v", profileID), -1)
 
@@ -5761,7 +5761,7 @@ func (s *WirelessService) UpdateNetworkWirelessEthernetPortsProfile(networkID st
 */
 func (s *WirelessService) UpdateNetworkWirelessRfProfile(networkID string, rfProfileID string, requestWirelessUpdateNetworkWirelessRfProfile *RequestWirelessUpdateNetworkWirelessRfProfile) (*ResponseWirelessUpdateNetworkWirelessRfProfile, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/rfProfiles/{rfProfileId}"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{rfProfileId}", fmt.Sprintf("%v", rfProfileID), -1)
 
@@ -5794,7 +5794,7 @@ func (s *WirelessService) UpdateNetworkWirelessRfProfile(networkID string, rfPro
 */
 func (s *WirelessService) UpdateNetworkWirelessSettings(networkID string, requestWirelessUpdateNetworkWirelessSettings *RequestWirelessUpdateNetworkWirelessSettings) (*ResponseWirelessUpdateNetworkWirelessSettings, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/settings"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 
 	response, err := s.client.R().
@@ -5827,7 +5827,7 @@ func (s *WirelessService) UpdateNetworkWirelessSettings(networkID string, reques
 */
 func (s *WirelessService) UpdateNetworkWirelessSSID(networkID string, number string, requestWirelessUpdateNetworkWirelessSsid *RequestWirelessUpdateNetworkWirelessSSID) (*ResponseWirelessUpdateNetworkWirelessSSID, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/ssids/{number}"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{number}", fmt.Sprintf("%v", number), -1)
 
@@ -5861,7 +5861,7 @@ func (s *WirelessService) UpdateNetworkWirelessSSID(networkID string, number str
 */
 func (s *WirelessService) UpdateNetworkWirelessSSIDBonjourForwarding(networkID string, number string, requestWirelessUpdateNetworkWirelessSsidBonjourForwarding *RequestWirelessUpdateNetworkWirelessSSIDBonjourForwarding) (*ResponseWirelessUpdateNetworkWirelessSSIDBonjourForwarding, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/ssids/{number}/bonjourForwarding"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{number}", fmt.Sprintf("%v", number), -1)
 
@@ -5895,7 +5895,7 @@ func (s *WirelessService) UpdateNetworkWirelessSSIDBonjourForwarding(networkID s
 */
 func (s *WirelessService) UpdateNetworkWirelessSSIDDeviceTypeGroupPolicies(networkID string, number string, requestWirelessUpdateNetworkWirelessSsidDeviceTypeGroupPolicies *RequestWirelessUpdateNetworkWirelessSSIDDeviceTypeGroupPolicies) (*resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/ssids/{number}/deviceTypeGroupPolicies"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{number}", fmt.Sprintf("%v", number), -1)
 
@@ -5927,7 +5927,7 @@ func (s *WirelessService) UpdateNetworkWirelessSSIDDeviceTypeGroupPolicies(netwo
 */
 func (s *WirelessService) UpdateNetworkWirelessSSIDEapOverride(networkID string, number string, requestWirelessUpdateNetworkWirelessSsidEapOverride *RequestWirelessUpdateNetworkWirelessSSIDEapOverride) (*ResponseWirelessUpdateNetworkWirelessSSIDEapOverride, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/ssids/{number}/eapOverride"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{number}", fmt.Sprintf("%v", number), -1)
 
@@ -5961,7 +5961,7 @@ func (s *WirelessService) UpdateNetworkWirelessSSIDEapOverride(networkID string,
 */
 func (s *WirelessService) UpdateNetworkWirelessSSIDFirewallL3FirewallRules(networkID string, number string, requestWirelessUpdateNetworkWirelessSsidFirewallL3FirewallRules *RequestWirelessUpdateNetworkWirelessSSIDFirewallL3FirewallRules) (*ResponseWirelessUpdateNetworkWirelessSSIDFirewallL3FirewallRules, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/ssids/{number}/firewall/l3FirewallRules"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{number}", fmt.Sprintf("%v", number), -1)
 
@@ -5995,7 +5995,7 @@ func (s *WirelessService) UpdateNetworkWirelessSSIDFirewallL3FirewallRules(netwo
 */
 func (s *WirelessService) UpdateNetworkWirelessSSIDFirewallL7FirewallRules(networkID string, number string, requestWirelessUpdateNetworkWirelessSsidFirewallL7FirewallRules *RequestWirelessUpdateNetworkWirelessSSIDFirewallL7FirewallRules) (*ResponseWirelessUpdateNetworkWirelessSSIDFirewallL7FirewallRules, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/ssids/{number}/firewall/l7FirewallRules"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{number}", fmt.Sprintf("%v", number), -1)
 
@@ -6029,7 +6029,7 @@ func (s *WirelessService) UpdateNetworkWirelessSSIDFirewallL7FirewallRules(netwo
 */
 func (s *WirelessService) UpdateNetworkWirelessSSIDHotspot20(networkID string, number string, requestWirelessUpdateNetworkWirelessSsidHotspot20 *RequestWirelessUpdateNetworkWirelessSSIDHotspot20) (*resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/ssids/{number}/hotspot20"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{number}", fmt.Sprintf("%v", number), -1)
 
@@ -6062,7 +6062,7 @@ func (s *WirelessService) UpdateNetworkWirelessSSIDHotspot20(networkID string, n
 */
 func (s *WirelessService) UpdateNetworkWirelessSSIDIDentityPsk(networkID string, number string, identityPskID string, requestWirelessUpdateNetworkWirelessSsidIdentityPsk *RequestWirelessUpdateNetworkWirelessSSIDIDentityPsk) (*ResponseWirelessUpdateNetworkWirelessSSIDIDentityPsk, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/ssids/{number}/identityPsks/{identityPskId}"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{number}", fmt.Sprintf("%v", number), -1)
 	path = strings.Replace(path, "{identityPskId}", fmt.Sprintf("%v", identityPskID), -1)
@@ -6097,7 +6097,7 @@ func (s *WirelessService) UpdateNetworkWirelessSSIDIDentityPsk(networkID string,
 */
 func (s *WirelessService) UpdateNetworkWirelessSSIDSchedules(networkID string, number string, requestWirelessUpdateNetworkWirelessSsidSchedules *RequestWirelessUpdateNetworkWirelessSSIDSchedules) (*resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/ssids/{number}/schedules"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{number}", fmt.Sprintf("%v", number), -1)
 
@@ -6129,7 +6129,7 @@ func (s *WirelessService) UpdateNetworkWirelessSSIDSchedules(networkID string, n
 */
 func (s *WirelessService) UpdateNetworkWirelessSSIDSplashSettings(networkID string, number string, requestWirelessUpdateNetworkWirelessSsidSplashSettings *RequestWirelessUpdateNetworkWirelessSSIDSplashSettings) (*ResponseWirelessUpdateNetworkWirelessSSIDSplashSettings, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/ssids/{number}/splash/settings"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{number}", fmt.Sprintf("%v", number), -1)
 
@@ -6163,7 +6163,7 @@ func (s *WirelessService) UpdateNetworkWirelessSSIDSplashSettings(networkID stri
 */
 func (s *WirelessService) UpdateNetworkWirelessSSIDTrafficShapingRules(networkID string, number string, requestWirelessUpdateNetworkWirelessSsidTrafficShapingRules *RequestWirelessUpdateNetworkWirelessSSIDTrafficShapingRules) (*ResponseWirelessUpdateNetworkWirelessSSIDTrafficShapingRules, *resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/ssids/{number}/trafficShaping/rules"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{number}", fmt.Sprintf("%v", number), -1)
 
@@ -6197,7 +6197,7 @@ func (s *WirelessService) UpdateNetworkWirelessSSIDTrafficShapingRules(networkID
 */
 func (s *WirelessService) UpdateNetworkWirelessSSIDVpn(networkID string, number string, requestWirelessUpdateNetworkWirelessSsidVpn *RequestWirelessUpdateNetworkWirelessSSIDVpn) (*resty.Response, error) {
 	path := "/api/v1/networks/{networkId}/wireless/ssids/{number}/vpn"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{number}", fmt.Sprintf("%v", number), -1)
 
@@ -6232,7 +6232,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-network
 func (s *WirelessService) DeleteNetworkWirelessEthernetPortsProfile(networkID string, profileID string) (*resty.Response, error) {
 	//networkID string,profileID string
 	path := "/api/v1/networks/{networkId}/wireless/ethernet/ports/profiles/{profileId}"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{profileId}", fmt.Sprintf("%v", profileID), -1)
 
@@ -6266,7 +6266,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-network
 func (s *WirelessService) DeleteNetworkWirelessRfProfile(networkID string, rfProfileID string) (*resty.Response, error) {
 	//networkID string,rfProfileID string
 	path := "/api/v1/networks/{networkId}/wireless/rfProfiles/{rfProfileId}"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{rfProfileId}", fmt.Sprintf("%v", rfProfileID), -1)
 
@@ -6301,7 +6301,7 @@ Documentation Link: https://developer.cisco.com/docs/dna-center/#!delete-network
 func (s *WirelessService) DeleteNetworkWirelessSSIDIDentityPsk(networkID string, number string, identityPskID string) (*resty.Response, error) {
 	//networkID string,number string,identityPskID string
 	path := "/api/v1/networks/{networkId}/wireless/ssids/{number}/identityPsks/{identityPskId}"
-	s.rateLimiterBucket.Wait(1)
+	s.ratelimiter.Take()
 	path = strings.Replace(path, "{networkId}", fmt.Sprintf("%v", networkID), -1)
 	path = strings.Replace(path, "{number}", fmt.Sprintf("%v", number), -1)
 	path = strings.Replace(path, "{identityPskId}", fmt.Sprintf("%v", identityPskID), -1)
