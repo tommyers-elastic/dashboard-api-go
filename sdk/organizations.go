@@ -1,6 +1,7 @@
 package meraki
 
 import (
+	"encoding/json"
 	"fmt"
 	"strings"
 
@@ -1722,6 +1723,25 @@ type ResponseItemOrganizationsCreateOrganizationInventoryOnboardingCloudMonitori
 type ResponseOrganizationsReleaseFromOrganizationInventory struct {
 	Serials []string `json:"serials,omitempty"` // Serials of the devices that were released
 }
+
+type HeadLicenseID string
+
+func (h *HeadLicenseID) UnmarshalJSON(data []byte) error {
+	var str string
+	if err := json.Unmarshal(data, &str); err == nil {
+		*h = HeadLicenseID(str)
+		return nil
+	}
+
+	var num float64
+	if err := json.Unmarshal(data, &num); err == nil {
+		*h = HeadLicenseID(fmt.Sprintf("%.0f", num))
+		return nil
+	}
+
+	return fmt.Errorf("HeadLicenseID: unsupported type: %s", string(data))
+}
+
 type ResponseOrganizationsGetOrganizationLicenses []ResponseItemOrganizationsGetOrganizationLicenses // Array of ResponseOrganizationsGetOrganizationLicenses
 type ResponseItemOrganizationsGetOrganizationLicenses struct {
 	ActivationDate            string                                                                       `json:"activationDate,omitempty"`            // The date the license started burning
@@ -1729,7 +1749,7 @@ type ResponseItemOrganizationsGetOrganizationLicenses struct {
 	DeviceSerial              string                                                                       `json:"deviceSerial,omitempty"`              // Serial number of the device the license is assigned to
 	DurationInDays            *int                                                                         `json:"durationInDays,omitempty"`            // The duration of the individual license
 	ExpirationDate            string                                                                       `json:"expirationDate,omitempty"`            // The date the license will expire
-	HeadLicenseID             string                                                                       `json:"headLicenseId,omitempty"`             // The id of the head license this license is queued behind. If there is no head license, it returns nil.
+	HeadLicenseID             HeadLicenseID                                                                `json:"headLicenseId,omitempty"`             // The id of the head license this license is queued behind. If there is no head license, it returns nil.
 	ID                        string                                                                       `json:"id,omitempty"`                        // License ID
 	LicenseKey                string                                                                       `json:"licenseKey,omitempty"`                // License key
 	LicenseType               string                                                                       `json:"licenseType,omitempty"`               // License type
