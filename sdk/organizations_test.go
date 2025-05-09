@@ -20,10 +20,13 @@ func TestHeadLicenseID_UnmarshalJSON(t *testing.T) {
 	}{
 		{`"12345"`, "12345", false},
 		{`12345`, "12345", false},
-		{`12345.0`, "12345", false},
+		{`12345.0`, "12345.0", false},
 		{`null`, "", false},
 		{`true`, "", true},
 		{`{}`, "", true},
+		// testing some bigger numbers
+		{`9192581925819285192581295812958125981`, "9192581925819285192581295812958125981", false},
+		{`"9192581925819285192581295812958125981"`, "9192581925819285192581295812958125981", false},
 	}
 
 	for _, tt := range tests {
@@ -57,19 +60,19 @@ func TestOrganizationsService_GetOrganizationLicenses_HeadLicenseIDHandling(t *t
 		{
 			name:                  "HeadLicenseId as string",
 			mockResponseStatus:    http.StatusOK,
-			mockResponseBody:      `[{"id": "L_123", "headLicenseId": "string-head-id"}]`,
+			mockResponseBody:      `[{"id": "L_123", "headLicenseId": "9591829581295182591859158195"}]`,
 			organizationID:        "org1",
 			queryParams:           &GetOrganizationLicensesQueryParams{},
-			expectedHeadLicenseID: "string-head-id",
+			expectedHeadLicenseID: "9591829581295182591859158195",
 			expectError:           false,
 		},
 		{
 			name:                  "HeadLicenseId as number",
 			mockResponseStatus:    http.StatusOK,
-			mockResponseBody:      `[{"id": "L_456", "headLicenseId": 98765}]`,
+			mockResponseBody:      `[{"id": "L_456", "headLicenseId": 987659185291859128519258195}]`,
 			organizationID:        "org2",
 			queryParams:           &GetOrganizationLicensesQueryParams{},
-			expectedHeadLicenseID: "98765",
+			expectedHeadLicenseID: "987659185291859128519258195",
 			expectError:           false,
 		},
 		{
@@ -78,7 +81,7 @@ func TestOrganizationsService_GetOrganizationLicenses_HeadLicenseIDHandling(t *t
 			mockResponseBody:      `[{"id": "L_789", "headLicenseId": 123.45}]`,
 			organizationID:        "org3",
 			queryParams:           &GetOrganizationLicensesQueryParams{},
-			expectedHeadLicenseID: "123",
+			expectedHeadLicenseID: "123.45",
 			expectError:           false,
 		},
 		{

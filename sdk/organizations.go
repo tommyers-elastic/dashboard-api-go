@@ -1733,9 +1733,9 @@ func (h *HeadLicenseID) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	var num float64
+	var num json.Number
 	if err := json.Unmarshal(data, &num); err == nil {
-		*h = HeadLicenseID(fmt.Sprintf("%.0f", num))
+		*h = HeadLicenseID(num.String())
 		return nil
 	}
 
