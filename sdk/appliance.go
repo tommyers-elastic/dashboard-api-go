@@ -1673,21 +1673,21 @@ type ResponseItemApplianceGetOrganizationApplianceVpnStatsMerakiVpnpeers struct 
 type ResponseItemApplianceGetOrganizationApplianceVpnStatsMerakiVpnpeersJitterSummaries struct {
 	AvgJitter      *float64 `json:"avgJitter,omitempty"`      //
 	MaxJitter      *float64 `json:"maxJitter,omitempty"`      //
-	MinJitter      *int     `json:"minJitter,omitempty"`      //
+	MinJitter      *float64 `json:"minJitter,omitempty"`      //
 	ReceiverUplink string   `json:"receiverUplink,omitempty"` //
 	SenderUplink   string   `json:"senderUplink,omitempty"`   //
 }
 type ResponseItemApplianceGetOrganizationApplianceVpnStatsMerakiVpnpeersLatencySummaries struct {
-	AvgLatencyMs   *int   `json:"avgLatencyMs,omitempty"`   //
-	MaxLatencyMs   *int   `json:"maxLatencyMs,omitempty"`   //
-	MinLatencyMs   *int   `json:"minLatencyMs,omitempty"`   //
-	ReceiverUplink string `json:"receiverUplink,omitempty"` //
-	SenderUplink   string `json:"senderUplink,omitempty"`   //
+	AvgLatencyMs   *float64 `json:"avgLatencyMs,omitempty"`   //
+	MaxLatencyMs   *float64 `json:"maxLatencyMs,omitempty"`   //
+	MinLatencyMs   *float64 `json:"minLatencyMs,omitempty"`   //
+	ReceiverUplink string   `json:"receiverUplink,omitempty"` //
+	SenderUplink   string   `json:"senderUplink,omitempty"`   //
 }
 type ResponseItemApplianceGetOrganizationApplianceVpnStatsMerakiVpnpeersLossPercentageSummaries struct {
-	AvgLossPercentage *int     `json:"avgLossPercentage,omitempty"` //
+	AvgLossPercentage *float64 `json:"avgLossPercentage,omitempty"` //
 	MaxLossPercentage *float64 `json:"maxLossPercentage,omitempty"` //
-	MinLossPercentage *int     `json:"minLossPercentage,omitempty"` //
+	MinLossPercentage *float64 `json:"minLossPercentage,omitempty"` //
 	ReceiverUplink    string   `json:"receiverUplink,omitempty"`    //
 	SenderUplink      string   `json:"senderUplink,omitempty"`      //
 }
@@ -1699,8 +1699,8 @@ type ResponseItemApplianceGetOrganizationApplianceVpnStatsMerakiVpnpeersMosSumma
 	SenderUplink   string   `json:"senderUplink,omitempty"`   //
 }
 type ResponseItemApplianceGetOrganizationApplianceVpnStatsMerakiVpnpeersUsageSummary struct {
-	ReceivedInKilobytes *int `json:"receivedInKilobytes,omitempty"` //
-	SentInKilobytes     *int `json:"sentInKilobytes,omitempty"`     //
+	ReceivedInKilobytes string `json:"receivedInKilobytes,omitempty"` //
+	SentInKilobytes     string `json:"sentInKilobytes,omitempty"`     //
 }
 type ResponseApplianceGetOrganizationApplianceVpnStatuses []ResponseItemApplianceGetOrganizationApplianceVpnStatuses // Array of ResponseApplianceGetOrganizationApplianceVpnStatuses
 type ResponseItemApplianceGetOrganizationApplianceVpnStatuses struct {
