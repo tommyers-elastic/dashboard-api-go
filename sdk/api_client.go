@@ -118,7 +118,7 @@ func NewClient() (*Client, error) {
 	// Retry on 429
 	client.AddRetryCondition(
 		func(r *resty.Response, err error) bool {
-			return err != nil || r.StatusCode() == http.StatusTooManyRequests
+			return err != nil || (r != nil && r.StatusCode() == http.StatusTooManyRequests)
 		},
 	)
 
